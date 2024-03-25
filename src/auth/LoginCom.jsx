@@ -13,6 +13,9 @@ const LoginCom = () => {
 
   const loginUser = async (e) => {
     e.preventDefault();
+    if(email==="" && password===""){
+      notifyE("Email And Password Is Required:(");
+    }
     try {
       const logIn = await fetch("http://localhost:4000/api/v1/users/login", {
         method: "POST",
