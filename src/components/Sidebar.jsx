@@ -71,7 +71,7 @@ const Sidebar = () => {
 
           {/* For mobile */}
           <div className="w-full flex flex-col gap-2 items-center md:hidden  ">
-            <div className=" flex items-center py-[5px]  justify-center  rounded-sm text-white border-2 w-[95%]  gap-4 text-[1.2em] cursor-pointer hover:bg-purple-800">
+            <div onClick={()=>handleNavigate("/login")} className=" flex items-center py-[5px]  justify-center  rounded-sm text-white border-2 w-[95%]  gap-4 text-[1.2em] cursor-pointer hover:bg-purple-800">
               <span>Log in</span>
             </div>
             <div className="flex items-center py-[5px] text-center justify-center  bg-[#AE7AFF]  rounded-sm text-white border-2 w-[95%]  gap-4 text-[1.2em] cursor-pointer hover:bg-purple-800  ">

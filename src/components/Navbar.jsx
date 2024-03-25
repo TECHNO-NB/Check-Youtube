@@ -4,6 +4,7 @@ import { IoSearchOutline } from "react-icons/io5";
 import { FaBarsStaggered } from "react-icons/fa6";
 import {showhidesidebar} from "../context/GlobalContext"
 import { IoCloseSharp } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 
 const Navbar = () => {
@@ -11,6 +12,11 @@ const Navbar = () => {
   const showSideBar=()=>{
     open ? setOpen(false) : setOpen(true);
   }
+  const navigate = useNavigate();
+  const handleNavigate = (path) => {
+    navigate(path);
+    setOpen(true);
+  };
 return( 
     <nav className="bg-gray-800 w-[100vw] h-[4em] border-b-2 border-white sticky top-0 px-0 flex justify-around items-center z-10 md:px-10 md:justify-between">
     <img className="w-14" src={logo}></img>
@@ -25,7 +31,7 @@ return(
         :
         <IoCloseSharp onClick={showSideBar} className="block text-white text-2xl md:hidden"/>
         }
-      <button className="text-white hidden md:block">Log in</button>
+      <button onClick={()=>handleNavigate("/login")} className="text-white hidden md:block">Log in</button>
       <button  className="bg-[#AE7AFF] hidden  font-[700] text-black px-4 py-[5px]  border-b border-purple-200 md:block">Sign up</button>
     </div> 
 
