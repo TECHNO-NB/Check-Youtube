@@ -35,7 +35,7 @@ const LoginCom = () => {
     } catch (error) {}
   };
   return (
-    <div className="h-[50vh]  mt-24  flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+    <div className="h-[50vh]  mt-14  flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <img className="mx-auto h-20 pt-6 pb-0 w-auto" src={logo} alt="Logo" />
         <h2 className="mt-6 text-center text-3xl font-extrabold text-purple-800">
@@ -43,13 +43,13 @@ const LoginCom = () => {
         </h2>
       </div>
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
+      <div className="mt-2 sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="bg-gray-800 py-0 px-4 shadow sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={(e)=>loginUser(e)} >
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-white"
               >
                 Email address
               </label>
@@ -69,7 +69,7 @@ const LoginCom = () => {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-gray-700"
+                className="block text-sm font-medium text-white"
               >
                 Password
               </label>
@@ -78,6 +78,7 @@ const LoginCom = () => {
                   id="password"
                   type="password"
                   autoComplete="true"
+                  placeholder="Enter Your Email.."
                  onChange={(e) => setPassword(e.target.value)}
                   required
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
