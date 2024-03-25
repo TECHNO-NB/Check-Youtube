@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    margin: 0;
+    padding: 0;
+    border-radius: 0%;
+    user-select: none;
+   
+}
+
+body{
+    background: #1F2937;
+}
+.sidebar{
+    position: relative;
+    top:40%;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
