@@ -81,7 +81,7 @@ const LoginCom = () => {
                   id="password"
                   type="password"
                   autoComplete="true"
-                  placeholder="Enter Your Email.."
+                  placeholder="Enter Your Password.."
                  onChange={(e) => setPassword(e.target.value)}
                   required
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
