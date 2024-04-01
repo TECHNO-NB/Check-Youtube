@@ -9,6 +9,8 @@ import VideoUpload from "./pages/VideoUpload";
 import { ToastContainer } from "react-toastify";
 import Login from "./pages/Login";
 import ProctedRoute from "./proctedroute/ProctedRoute"
+import Register from "./pages/Register"
+
 
 function App() {
   return (
@@ -20,6 +22,7 @@ function App() {
           <Route path="/videodetails" element={<VideoDetails />}></Route>
           <Route path="/uploadvideo" element={<ProctedRoute><VideoUpload /></ProctedRoute>}></Route>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/register" element={<Register/>}></Route>
           <Route path="*" element={<NotFoundPage />}></Route>
         </Routes>
         <ToastContainer theme="dark" position="top-right"/>

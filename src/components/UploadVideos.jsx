@@ -27,7 +27,12 @@ const UploadVideos = () => {
 
     const uploadVideoToserver = await axios.post(
       "http://localhost:4000/api/v1/videoupload",
-      formData
+      formData,
+      {
+        headers:{
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjAxNzA2YTk3NTk3NjMxN2NjZjgzOTMiLCJlbWFpbCI6Im5hcmVzaEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImRodXJrb3QiLCJmdWxsTmFtZSI6ImtpbmcgYm95IiwiaWF0IjoxNzExNTE5ODYyLCJleHAiOjE3MTIzODM4NjJ9.QXON_jeT1C5g0qiwwhmZQe1IfuMjQJ3gRt1pftnlmGM"
+        }
+      }
     );
     setIsLoading(true);
     notifyS("Uploaded Video Successfully :)");

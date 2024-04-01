@@ -5,7 +5,16 @@ const VideoCard = (videoData) => {
 
   const VideoDetails = (videoId) => {
     navigate("/videodetails", { state: { videoId: videoId } });
+
+  
   };
+  const durationInSeconds = videoData.data.duration;
+
+  const hours = Math.floor(durationInSeconds / 3600);
+  const minutes = Math.floor((durationInSeconds % 3600) / 60);
+  const seconds = Math.floor(durationInSeconds % 60);
+
+  const formattedDuration = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 
   return (
     <div className="w-[100vw] h-[100%] z-[-4] bg-gray-800  grid grid-cols-1 gap-4 px-2 mr-24 text-white md:mr-14 md:grid-cols-4  md:w-[82.5vw] ">
@@ -16,7 +25,7 @@ const VideoCard = (videoData) => {
             onClick={() => VideoDetails(videoData.data._id)}
             src={videoData.data.thumbnail}
           ></img>
-          <p className="absolute bottom-2 right-2 bg-black px-2">20:45</p>
+          <p className="absolute bottom-2 right-2 bg-black px-2">{formattedDuration}</p>
         </div>
         <div className="w-full">
           <div className="flex gap-2">

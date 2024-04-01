@@ -2,22 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
+* {
     margin: 0;
     padding: 0;
     border-radius: 0%;
     user-select: none;
-   
+
 }
 
-body{
+body {
     background: #1F2937;
 }
-.sidebar{
+
+.sidebar {
     position: relative;
-    top:31.5%;
+    top: 37.5%;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     display: none;
+}
+
+@media (max-width:600px) {
+    .sidebar {
+        position: relative;
+        top: 30%;
+    }
 }

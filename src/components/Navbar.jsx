@@ -31,8 +31,8 @@ return(
         :
         <IoCloseSharp onClick={showSideBar} className="block text-white text-2xl md:hidden"/>
         }
-      <button onClick={()=>handleNavigate("/login")} className="text-white hidden md:block">Log in</button>
-      <button  className="bg-[#AE7AFF] hidden  font-[700] text-black px-4 py-[5px]  border-b border-purple-200 md:block">Sign up</button>
+      <button onClick={()=>handleNavigate("/login")} className="text-white hidden md:block hover:text-purple-400 ">Log in</button>
+      <button onClick={()=>handleNavigate("/register")}  className="bg-[#AE7AFF] hidden  font-[700] text-black px-4 py-[5px]  rounded hover:bg-slate-100 md:block">Sign up</button>
     </div> 
 
     </nav>
