@@ -16,7 +16,8 @@ const UploadVideos = () => {
   const navigate = useNavigate();
 
   const uploadVideo = async (e) => {
-    setIsLoading(true);
+    try {
+      setIsLoading(true);
     e.preventDefault();
     const formData = new FormData();
     formData.append("video", video);
@@ -32,7 +33,12 @@ const UploadVideos = () => {
     notifyS("Uploaded Video Successfully :)");
     navigate("/");
     console.log(uploadVideoToserver.data);
-    setIsLoading(false);
+    setIsLoading(false); 
+    } catch (error) {
+      notifyE("Network Connection Or Server Errors:(");
+      setIsLoading(false); 
+    }
+   
   };
   return (
     <div className="min-h-[75vh]  flex flex-col justify-center py-12 sm:px-6 lg:px-8">
