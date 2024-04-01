@@ -8,7 +8,7 @@ const VideoCard = (videoData) => {
   };
 
   return (
-    <div className="w-[100vw] h-[100%] z-[-4] bg-gray-800  grid grid-cols-1 gap-4 px-2 mr-24 text-white md:mr-14 sm:grid-cols-4 md:grid-cols-4  md:w-[82.5vw] ">
+    <div className="w-[100vw] h-[100%] z-[-4] bg-gray-800  grid grid-cols-1 gap-4 px-2 mr-24 text-white md:mr-14 md:grid-cols-4  md:w-[82.5vw] ">
       <div className="flex flex-col items-center gap-2 w-[100%]  cursor-pointer ">
         <div className="relative">
           <img
