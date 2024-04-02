@@ -26,6 +26,6 @@ body {
 @media (max-width:600px) {
     .sidebar {
         position: relative;
-        top: 30%;
+        top: 29%;
     }
 }
