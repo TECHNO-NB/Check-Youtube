@@ -11,7 +11,7 @@ const RegisterCom = () => {
   const notifyE = (msg) => toast.error(msg);
   const notifyS = (msg) => toast.success(msg);
   return (
-    <div className="h-[84vh]   mt-14  flex flex-col justify-center py-12 sm:px-6 lg:px-8 md:h-[70vh]">
+    <div className="h-[88vh]   mt-4  flex flex-col justify-center py-12 sm:px-6 lg:px-8 md:h-[70vh]">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <img className="mx-auto h-20 pt-6 pb-0 w-auto" src={logo} alt="Logo" />
         <h2 className="mt-6 text-center text-3xl font-extrabold text-purple-800">

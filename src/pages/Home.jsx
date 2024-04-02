@@ -4,6 +4,7 @@ import VideoCard from "../components/VideoCard";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Cookies from "js-cookie";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -25,11 +26,12 @@ const Home = () => {
 
     fetchData();
   }, []);
+  console.log(Cookies.get("refreshToken"))
 
   return (
     <div className="bg-gray-800 w-[100vw]">
       <Sidebar />
-      <div className="pl-[0.0em] mt-4 md:pl-[16.5em]">
+      <div className="pl-[0.0em] md:pl-[16.5em]">
         {data.length > 0 &&
           data.map((videoData) => (
             <VideoCard key={videoData._id} data={videoData} />

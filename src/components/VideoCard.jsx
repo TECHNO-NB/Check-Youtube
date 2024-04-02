@@ -40,7 +40,7 @@ const VideoCard = (videoData) => {
               <p className=" text-gray-200 font-[300]">
                 10.3k Views · <span>44 minutes ago</span>
               </p>
-              <p className=" text-gray-200 font-[400]">Code Master</p>
+              <p className=" text-gray-200 font-[400] pb-2">Code Master</p>
             </div>
           </div>
         </div>
