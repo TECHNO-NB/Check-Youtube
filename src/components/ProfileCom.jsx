@@ -18,7 +18,14 @@ const ProfileCom = () => {
       <p className='text-[0.8em]'>@reactpatterns</p>
       <p className='text-[0.8em]'>600k Subscribers · 220 Subscribed</p>
     </div>
-    <button className='bg-purple-800 px-4 h-8 mt-2 text-center rounded-[10px] text-white py-2'>Subscribed</button>
+    <button  className='bg-purple-400 h-10 mt-4 px-2 rounded hover:bg-red-600'>Subscribed</button>
+    </div>
+    <div className="flex justify-evenly gap-1 border-b-2 py-2">
+    <button  className='bg-purple-400 h-8 mt-4 px-2 rounded hover:bg-red-600'>Videos</button>
+    <button  className='bg-purple-400 h-8 mt-4 px-2 rounded hover:bg-red-600'>Playlist</button>
+    <button  className='bg-purple-400 h-8 mt-4 px-2 rounded hover:bg-red-600'>Tweets</button>
+    <button  className='bg-purple-400 h-8 mt-4 px-2 rounded hover:bg-red-600'>Subscribed</button>
+    
     </div>
     </div>
   )
