@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import logo from "../assets/logo.svg";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie"
+import {useDispatch} from "react-redux";
+import { addUser } from "../redux/UserSlice";
 
 const LoginCom = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const dispatch=useDispatch();
 
   const notifyE = (msg) => toast.error(msg);
   const notifyS = (msg) => toast.success(msg);
@@ -37,6 +39,7 @@ const LoginCom = () => {
       } else {
         notifyS("Login Successfully:)");
         navigate("/");
+        dispatch(addUser({'id':res.data.user._id,'username':res.data.user.username}))
        
       }
     

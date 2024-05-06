@@ -36,9 +36,11 @@ const Sidebar = () => {
             <AiOutlineLike className="ml-2" />
             <span>Liked Videos</span>
           </div>
-          <div className=" flex items-center py-[5px]  rounded-sm text-white border-2 w-[95%]  gap-4 text-[1.2em] cursor-pointer hover:bg-purple-800 ">
+          <div onClick={()=>{
+            handleNavigate("/profile")
+          }} className=" flex items-center py-[5px]  rounded-sm text-white border-2 w-[95%]  gap-4 text-[1.2em] cursor-pointer hover:bg-purple-800 ">
             <LuTimerReset className="ml-2" />
-            <span>History</span>
+            <span>Profile</span>
           </div>
 
           <div onClick={()=>{

@@ -10,6 +10,7 @@ import { ToastContainer } from "react-toastify";
 import Login from "./pages/Login";
 import ProctedRoute from "./proctedroute/ProctedRoute";
 import Register from "./pages/Register";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -29,6 +30,14 @@ function App() {
           ></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
+          <Route
+            path="/profile"
+            element={
+              <ProctedRoute>
+                <Profile />
+              </ProctedRoute>
+            }
+          ></Route>
           <Route path="*" element={<NotFoundPage />}></Route>
         </Routes>
         <ToastContainer theme="dark" position="top-right" />
