@@ -12,6 +12,8 @@ const VideoPlay = (video) => {
         src={video.data}
         autoPlay
         controls
+        setQuality={480}
+      
       />
       <LikeChannelDetails />
     </div>

@@ -4,7 +4,7 @@ import { LuTimerReset } from "react-icons/lu";
 import { BsCameraVideo } from "react-icons/bs";
 import { GoFileDirectory } from "react-icons/go";
 import { RiUserFollowLine } from "react-icons/ri";
-import { IoSettingsOutline } from "react-icons/io5";
+import { FaRegUserCircle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { showhidesidebar } from "../context/GlobalContext";
 
@@ -39,7 +39,7 @@ const Sidebar = () => {
           <div onClick={()=>{
             handleNavigate("/profile")
           }} className=" flex items-center py-[5px]  rounded-sm text-white border-2 w-[95%]  gap-4 text-[1.2em] cursor-pointer hover:bg-purple-800 ">
-            <LuTimerReset className="ml-2" />
+            <FaRegUserCircle className="ml-2" />
             <span>Profile</span>
           </div>
 
