@@ -6,7 +6,7 @@ const Profile = () => {
   return (
     <div className="bg-gray-800 w-[100vw]">
       <Sidebar />
-      <div className="pl-[0.0em] mt-4 md:pl-[0em]">
+      <div className="pl-[0.0em] mt-4 md:pl-[17em]">
         <ProfileCom />
       </div>
     </div>
