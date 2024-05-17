@@ -18,7 +18,7 @@ const ProfileCom = () => {
       <div className="mt-2 md:mt-3">
         <h1 className="text-white font-bold text-[12px] md:text-2xl">Techno Nb</h1>
         <h6 className="text-gray-300 mt-[-3px] text-[12px] md:text-[16px]">@naresh</h6>
-        <p className="text-gray-300 mt-[-0px] text-[8px] md:text-[16px]">600k Subscribers · 220 Subscribed</p>
+        <p className="text-gray-300 mt-[-0px] text-[10px] md:text-[16px]">600k Subscribers · 220 Subscribed</p>
       </div>
       </div>
 
@@ -27,6 +27,14 @@ const ProfileCom = () => {
         <FaUserPlus/>
         <button className="text-[15px] font-bold py-1 rounded-md md:text-[20px]">Subscribed</button>
       </div>
+      </div>
+
+      {/* Profile Page  Btn */}
+      <div className="flex w-[100vw] justify-around  gap-2 md:w-[81vw] px-1 mt-6 border-b-2 md:px-0 text-white">
+        <button className="bg-white  text-purple-500 w-80 h-6 md:h-10">Videos</button>
+        <button className=" text-gray-300 w-80 h-6 md:h-10">Playlist</button>
+        <button className=" text-gray-300 w-80 h-6 md:h-10">Tweets</button>
+        <button className=" text-gray-300 w-80 h-6 mb-1 md:h-10">Subscribed</button>
       </div>
      </div>
   </div>
