@@ -47,7 +47,7 @@ const Sidebar = () => {
             handleNavigate("/uploadvideo")
           }} className=" flex items-center py-[5px]  rounded-sm text-white border-2 w-[95%]  gap-4 text-[1.2em] cursor-pointer hover:bg-purple-800 ">
             <BsCameraVideo className="ml-2" />
-            <span>My Content</span>
+            <span>Upload Video</span>
           </div>
 
           <div className=" flex items-center py-[5px]  rounded-sm text-white border-2 w-[95%]  gap-4 text-[1.2em] cursor-pointer hover:bg-purple-800 ">
