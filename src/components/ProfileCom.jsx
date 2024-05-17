@@ -12,7 +12,7 @@ const ProfileCom = () => {
       <div className="flex justify-between">
            {/* left content channel name */}
         <div className="flex">
-        <div className="w-[7.5em] h-[6em] ml-2 bg-white border-black border-2 rounded-[100%] mt-[-25px] md:w-[8em] md:h-[8em] md:ml-0">
+        <div className="w-[5em] h-[5em] ml-2 bg-white border-black border-2 rounded-[100%] mt-[-25px] md:w-[8em] md:h-[8em] md:ml-0">
           <img className="w-full h-full rounded-[100%]" src={img} alt="profile"/>
       </div>
       <div className="div">
