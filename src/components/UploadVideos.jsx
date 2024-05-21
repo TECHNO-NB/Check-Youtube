@@ -30,7 +30,8 @@ const UploadVideos = () => {
       formData,
       {
         headers:{
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjAxNzA2YTk3NTk3NjMxN2NjZjgzOTMiLCJlbWFpbCI6Im5hcmVzaEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImRodXJrb3QiLCJmdWxsTmFtZSI6ImtpbmcgYm95IiwiaWF0IjoxNzExNTE5ODYyLCJleHAiOjE3MTIzODM4NjJ9.QXON_jeT1C5g0qiwwhmZQe1IfuMjQJ3gRt1pftnlmGM"
+          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjBhN2NkNTQ0MTI2MGY4MjA2MGUzOTQiLCJlbWFpbCI6Im5hcmVzaEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImRodXJrb3QiLCJmdWxsTmFtZSI6ImtpbmcgYm95IiwiaWF0IjoxNzE2MTgyNzgxLCJleHAiOjE3NDcyODY3ODF9.yj6zCRuxlpdvgkf5kMtSOpRqHVOMkswh99aTKJhS1ow",
+          "credentials": 'include'
         }
       }
     );

@@ -39,7 +39,9 @@ const LoginCom = () => {
       } else {
         notifyS("Login Successfully:)");
         navigate("/");
-        dispatch(addUser({'id':res.data.user._id,'username':res.data.user.username}))
+        console.log(res)
+        console.log("Data Received")
+        dispatch(addUser({'user':res.data.user}))
        
       }
     

@@ -12,8 +12,8 @@ const Home = () => {
 
   const notifyE = (msg) => toast.error(msg);
   const notifyS = (msg) => toast.success(msg);
-  const items=useSelector((state)=>state.user);
-  console.log(items)
+  const items = useSelector((state) => state.user);
+  console.log(items);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,15 +29,13 @@ const Home = () => {
 
     fetchData();
   }, []);
-  console.log(Cookies.get("refreshToken"))
-
   return (
     <div className="bg-gray-800  w-[100vw]">
       <Sidebar />
-      <div className="pl-[0.0em] grid grid-cols-1 w-[80vw] md:grid-cols-3 md:pl-[16.5em]">
+      <div className="pl-[0.0em] grid grid-cols-1 w-[80vw] md:grid-cols-4  md:gap-x-[18em] md:pl-[16.5em]">
         {data.length > 0 &&
           data.map((videoData) => (
-            <VideoCard  key={videoData._id} data={videoData} />
+            <VideoCard key={videoData._id} data={videoData} />
           ))}
       </div>
     </div>
