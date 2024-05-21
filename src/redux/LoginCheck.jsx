@@ -5,8 +5,8 @@ const loginCheck=createSlice({
     name:'loginCheck',
     initialState:false,
     loginUser:(state,action)=>{
-        state=action.payload;
+        return action.payload;
     }
 })
-
+export const {authCheck}=loginCheck.actions;
 export default loginCheck.reducer;

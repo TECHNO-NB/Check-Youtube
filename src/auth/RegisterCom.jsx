@@ -2,16 +2,59 @@ import React, { useState } from "react";
 import logo from "../assets/logo.svg";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import Loader from "../components/Loader";
+
+
+
+
 
 const RegisterCom = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const navigate = useNavigate();
-
   const notifyE = (msg) => toast.error(msg);
   const notifyS = (msg) => toast.success(msg);
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [avatar, setAvatar] = useState(null);
+  const [coverImage, setCoverImage] = useState(null);
+  const [fullName, setFullname] = useState("");
+  const [loading, setloading] = useState(false);
+
+  const navigate = useNavigate();
+
+  const registerUser = async (e) => {
+    try {
+      e.preventDefault();
+      setloading(true);
+
+      const formData = new FormData();
+      formData.append("email", email);
+      formData.append("avatar", avatar);
+      formData.append("coverImage", coverImage);
+      formData.append("password", password);
+      formData.append("fullName", fullName);
+      formData.append("username", username);
+
+      const registerData = await axios.post(
+        "http://localhost:4000/api/v1/users/register",
+        formData
+      );
+      console.log(registerData.data);
+      setloading(false)
+      notifyS(registerData.data.data.message);
+      navigate("/login");
+    } catch (error) {
+      notifyE("Somethings Wrongs:(")
+      console.log(error);
+    }
+  };
+
   return (
     <div className="h-[88vh]   mt-4  flex flex-col justify-center py-12 sm:px-6 lg:px-8 md:h-[70vh]">
+      {
+        loading ? <Loader/> : null
+      }
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <img className="mx-auto h-20 pt-6 pb-0 w-auto" src={logo} alt="Logo" />
         <h2 className="mt-6 text-center text-3xl font-extrabold text-purple-800">
@@ -21,7 +64,11 @@ const RegisterCom = () => {
 
       <div className="mt-2 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-gray-800 py-0 px-4 shadow sm:rounded-lg sm:px-10">
-          <form className="space-y-6" onSubmit={(e) => loginUser(e)}>
+          <form
+            method="POST"
+            className="space-y-6"
+            onSubmit={(e) => registerUser(e)}
+          >
             <div>
               <label
                 htmlFor="username"
@@ -34,6 +81,7 @@ const RegisterCom = () => {
                   id="username"
                   type="text"
                   placeholder="Enter Your Username.."
+                  onChange={(e) => setUsername(e.target.value)}
                   required
                   className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
@@ -52,9 +100,9 @@ const RegisterCom = () => {
                   id="fullname"
                   type="text"
                   placeholder="Enter Your Fullname.."
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => setFullname(e.target.value)}
                   required
-                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
             </div>
@@ -101,17 +149,18 @@ const RegisterCom = () => {
 
             <div>
               <label
-                htmlFor="image"
+                htmlFor="avatar"
                 className="block text-sm font-medium text-white"
               >
                 Profile Pic
               </label>
               <div className="mt-1">
                 <input
-                  id="image"
+                  id="avatar"
                   name="image"
                   type="file"
                   accept="image/*"
+                  onChange={(e) => setAvatar(e.target.files[0])}
                   required
                   className="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-purple-300 rounded-md"
                 />
@@ -120,19 +169,19 @@ const RegisterCom = () => {
 
             <div>
               <label
-                htmlFor="image"
+                htmlFor="coverImage"
                 className="block text-sm font-medium text-white"
               >
-               Cover Pic
+                Cover Pic
               </label>
               <div className="mt-1">
                 <input
-                  onChange={(e) => setThumbnail(e.target.files[0])}
-                  id="image"
+                  onChange={(e) => setCoverImage(e.target.files[0])}
+                  id="coverImage"
                   name="image"
                   type="file"
                   accept="image/*"
-         className="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-purple-300 rounded-md"
+                  className="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-purple-300 rounded-md"
                 />
               </div>
             </div>

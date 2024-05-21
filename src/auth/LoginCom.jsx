@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import {useDispatch} from "react-redux";
 import { addUser } from "../redux/UserSlice";
+import { authCheck } from "../redux/LoginCheck";
 
 const LoginCom = () => {
   const [email, setEmail] = useState("");
@@ -42,6 +43,8 @@ const LoginCom = () => {
         console.log(res)
         console.log("Data Received")
         dispatch(addUser({'user':res.data.user}))
+        dispatch(authCheck(true))
+      
        
       }
     

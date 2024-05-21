@@ -3,8 +3,16 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { TailSpin, Hourglass } from "react-loader-spinner";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
+
+
 
 const UploadVideos = () => {
+
+  const items = useSelector((state) => state.user);
+  if(!items || !items.user){
+    alert("User Not Login")
+  }
   const notifyE = (msg) => toast.error(msg);
   const notifyS = (msg) => toast.success(msg);
   const [video, setVideo] = useState(null);
@@ -18,33 +26,34 @@ const UploadVideos = () => {
   const uploadVideo = async (e) => {
     try {
       setIsLoading(true);
-    e.preventDefault();
-    const formData = new FormData();
-    formData.append("video", video);
-    formData.append("thumbnail", thumbnail);
-    formData.append("title", title);
-    formData.append("description", description);
+      e.preventDefault();
+      const formData = new FormData();
+      formData.append("video", video);
+      formData.append("thumbnail", thumbnail);
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("owner",items.user._id)
 
-    const uploadVideoToserver = await axios.post(
-      "http://localhost:4000/api/v1/videoupload",
-      formData,
-      {
-        headers:{
-          "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjBhN2NkNTQ0MTI2MGY4MjA2MGUzOTQiLCJlbWFpbCI6Im5hcmVzaEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImRodXJrb3QiLCJmdWxsTmFtZSI6ImtpbmcgYm95IiwiaWF0IjoxNzE2MTgyNzgxLCJleHAiOjE3NDcyODY3ODF9.yj6zCRuxlpdvgkf5kMtSOpRqHVOMkswh99aTKJhS1ow",
-          "credentials": 'include'
+      const uploadVideoToserver = await axios.post(
+        "http://localhost:4000/api/v1/videoupload",
+        formData,
+        {
+          headers: {
+            Authorization:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjBhN2NkNTQ0MTI2MGY4MjA2MGUzOTQiLCJlbWFpbCI6Im5hcmVzaEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImRodXJrb3QiLCJmdWxsTmFtZSI6ImtpbmcgYm95IiwiaWF0IjoxNzE2MTgyNzgxLCJleHAiOjE3NDcyODY3ODF9.yj6zCRuxlpdvgkf5kMtSOpRqHVOMkswh99aTKJhS1ow",
+            credentials: "include",
+          },
         }
-      }
-    );
-    setIsLoading(true);
-    notifyS("Uploaded Video Successfully :)");
-    navigate("/");
-    console.log(uploadVideoToserver.data);
-    setIsLoading(false); 
+      );
+      setIsLoading(true);
+      notifyS("Uploaded Video Successfully :)");
+      navigate("/");
+      console.log(uploadVideoToserver.data);
+      setIsLoading(false);
     } catch (error) {
       notifyE("Network Connection Or Server Errors:(");
-      setIsLoading(false); 
+      setIsLoading(false);
     }
-   
   };
   return (
     <div className="min-h-[75vh]  flex flex-col justify-center py-12 sm:px-6 lg:px-8">

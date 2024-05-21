@@ -1,8 +1,9 @@
 import React from "react";
 import { ProgressBar } from "react-loader-spinner";
 
+
 const Loading = () => {
-  return (
+    return (
     <div className=" w-[100vw] h-[100vh] flex items-center justify-center text-2xl text-center text-white">
       <ProgressBar
         visible={true}
@@ -13,6 +14,7 @@ const Loading = () => {
         wrapperStyle={{}}
         wrapperClass=""
       />
+      
     </div>
   );
 };
