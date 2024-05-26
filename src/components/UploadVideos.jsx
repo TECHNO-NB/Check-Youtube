@@ -5,14 +5,11 @@ import { TailSpin, Hourglass } from "react-loader-spinner";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 
-
-
 const UploadVideos = () => {
+  const navigate = useNavigate();
 
   const items = useSelector((state) => state.user);
-  if(!items || !items.user){
-    alert("User Not Login")
-  }
+
   const notifyE = (msg) => toast.error(msg);
   const notifyS = (msg) => toast.success(msg);
   const [video, setVideo] = useState(null);
@@ -20,8 +17,6 @@ const UploadVideos = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
-  const navigate = useNavigate();
 
   const uploadVideo = async (e) => {
     try {
@@ -32,15 +27,14 @@ const UploadVideos = () => {
       formData.append("thumbnail", thumbnail);
       formData.append("title", title);
       formData.append("description", description);
-      formData.append("owner",items.user._id)
+      formData.append("owner", items.user._id);
 
       const uploadVideoToserver = await axios.post(
         "http://localhost:4000/api/v1/videoupload",
         formData,
         {
           headers: {
-            Authorization:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjBhN2NkNTQ0MTI2MGY4MjA2MGUzOTQiLCJlbWFpbCI6Im5hcmVzaEBnbWFpbC5jb20iLCJ1c2VybmFtZSI6ImRodXJrb3QiLCJmdWxsTmFtZSI6ImtpbmcgYm95IiwiaWF0IjoxNzE2MTgyNzgxLCJleHAiOjE3NDcyODY3ODF9.yj6zCRuxlpdvgkf5kMtSOpRqHVOMkswh99aTKJhS1ow",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
             credentials: "include",
           },
         }

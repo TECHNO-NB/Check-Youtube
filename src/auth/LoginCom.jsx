@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import logo from "../assets/logo.svg";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import {useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { addUser } from "../redux/UserSlice";
 import { authCheck } from "../redux/LoginCheck";
 
@@ -10,7 +10,7 @@ const LoginCom = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
 
   const notifyE = (msg) => toast.error(msg);
   const notifyS = (msg) => toast.success(msg);
@@ -24,10 +24,9 @@ const LoginCom = () => {
       const logIn = await fetch("http://localhost:4000/api/v1/users/login", {
         method: "POST",
         credentials: "include",
-        
+
         headers: {
           "Content-Type": "application/json",
-        
         },
         body: JSON.stringify({
           email,
@@ -40,19 +39,14 @@ const LoginCom = () => {
       } else {
         notifyS("Login Successfully:)");
         navigate("/");
-        console.log(res)
-        console.log("Data Received")
-        dispatch(addUser({'user':res.data.user}))
-        dispatch(authCheck(true))
-      
-       
+        localStorage.setItem("token", res.data.accessToken);
+        dispatch(addUser({ user: res.data.user }));
       }
-    
     } catch (error) {
-      notifyE("SomeThings Went wrong:(")
+      notifyE("SomeThings Went wrong:(");
     }
   };
-  
+
   return (
     <div className="h-[50vh]  mt-14  flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">

@@ -5,10 +5,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Loader from "../components/Loader";
 
-
-
-
-
 const RegisterCom = () => {
   const notifyE = (msg) => toast.error(msg);
   const notifyS = (msg) => toast.success(msg);
@@ -40,21 +36,19 @@ const RegisterCom = () => {
         "http://localhost:4000/api/v1/users/register",
         formData
       );
-      console.log(registerData.data);
-      setloading(false)
+
+      setloading(false);
       notifyS(registerData.data.data.message);
       navigate("/login");
     } catch (error) {
-      notifyE("Somethings Wrongs:(")
+      notifyE("Somethings Wrongs:(");
       console.log(error);
     }
   };
 
   return (
     <div className="h-[88vh]   mt-4  flex flex-col justify-center py-12 sm:px-6 lg:px-8 md:h-[70vh]">
-      {
-        loading ? <Loader/> : null
-      }
+      {loading ? <Loader /> : null}
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <img className="mx-auto h-20 pt-6 pb-0 w-auto" src={logo} alt="Logo" />
         <h2 className="mt-6 text-center text-3xl font-extrabold text-purple-800">

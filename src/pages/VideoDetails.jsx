@@ -14,11 +14,14 @@ const location=useLocation();
   }else{
     useEffect(() => {
      (async()=>{
-       const data=await axios.get(`http://localhost:4000/api/v1/getvideobyid/${location.state.videoId}`);
-       setVideo(data.data.data.videoFile)
+       const res=await axios.get(`http://localhost:4000/api/v1/getvideobyid/${location.state.videoId}`);
+       setVideo(res.data.data)
+     
        
         })()
     }, [])
+
+  
     
   }
 
