@@ -11,7 +11,7 @@ const VideoPlay = ({ data }) => {
       const token = localStorage.getItem("token");
       console.log(token);
       const res = await axios.post(
-        `http://localhost:4000/api/v1/videoviews/${videoId}`,
+        `https://ytbackend-awfu.onrender.com/${videoId}`,
         {},
         {
           headers: {

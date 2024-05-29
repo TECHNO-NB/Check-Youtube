@@ -30,7 +30,7 @@ const UploadVideos = () => {
       formData.append("owner", items.user._id);
 
       const uploadVideoToserver = await axios.post(
-        "http://localhost:4000/api/v1/videoupload",
+        "https://ytbackend-awfu.onrender.com/api/v1/videoupload",
         formData,
         {
           headers: {

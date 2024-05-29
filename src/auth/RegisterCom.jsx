@@ -33,7 +33,7 @@ const RegisterCom = () => {
       formData.append("username", username);
 
       const registerData = await axios.post(
-        "http://localhost:4000/api/v1/users/register",
+        "https://ytbackend-awfu.onrender.com/api/v1/users/register",
         formData
       );
 

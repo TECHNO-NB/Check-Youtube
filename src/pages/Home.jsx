@@ -19,7 +19,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:4000/api/v1/getallvideos?skip=${1}&&limit=${10}`
+          `https://ytbackend-awfu.onrender.com/api/v1/getallvideos?skip=${1}&&limit=${10}`
         );
         setData(response.data.data);
       
@@ -35,7 +35,7 @@ const Home = () => {
   return (
     <div className="bg-gray-800  w-[100vw]">
       <Sidebar />
-      <div className="pl-[0.0em] grid grid-cols-1 w-[80vw] sm:grid-cols-3 md:grid-cols-4   md:gap-x-[18em] md:pl-[16.5em]">
+      <div className="pl-[0.0em] grid grid-cols-1 w-[80vw] sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4   md:gap-x-[18em] md:pl-[16.5em]">
         {data.length > 0 &&
           data.map((videoData) => (
             <VideoCard key={videoData._id} data={videoData} />

@@ -14,7 +14,7 @@ const location=useLocation();
   }else{
     useEffect(() => {
      (async()=>{
-       const res=await axios.get(`http://localhost:4000/api/v1/getvideobyid/${location.state.videoId}`);
+       const res=await axios.get(`https://ytbackend-awfu.onrender.com/${location.state.videoId}`);
        setVideo(res.data.data)
      
        
