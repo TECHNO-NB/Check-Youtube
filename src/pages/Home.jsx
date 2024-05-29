@@ -19,7 +19,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://ytbackend-awfu.onrender.com/api/v1/getallvideos?skip=${1}&&limit=${10}`
+          `https://ytbackend-awfu.onrender.com/api/v1/getallvideos`
         );
         setData(response.data.data);
       
