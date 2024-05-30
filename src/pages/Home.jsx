@@ -18,12 +18,9 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `https://ytbackend-awfu.onrender.com/api/v1/getallvideos`
-        );
+        const response = await axios.get("https://ytbackend-awfu.onrender.com/api/v1/getallvideos");
+        console.log(response.data.data)
         setData(response.data.data);
-      
-        
       } catch (error) {
         notifyE("500 Error While Fetching Data...");
       }
