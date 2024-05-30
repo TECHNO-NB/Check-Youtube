@@ -7,10 +7,10 @@ const VideoCard = (videoData) => {
   const VideoDetails = (videoId) => {
     navigate("/videodetails", { state: { videoId: videoId } });
   };
+
+  
   const durationInSeconds = videoData.data.duration;
-console.log(videoData.data.createdAt)
-console.log(Date("2015-03-25"))
-  const hours = Math.floor(durationInSeconds / 3600);
+ const hours = Math.floor(durationInSeconds / 3600);
   const minutes = Math.floor((durationInSeconds % 3600) / 60);
   const seconds = Math.floor(durationInSeconds % 60);
 
