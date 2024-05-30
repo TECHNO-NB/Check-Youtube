@@ -5,10 +5,12 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../redux/UserSlice";
 import { authCheck } from "../redux/LoginCheck";
+import Comloader from "../components/loader/Comloader";
 
 const LoginCom = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading,setloading]=useState(false)
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -21,6 +23,7 @@ const LoginCom = () => {
       notifyE("Email And Password Is Required:(");
     }
     try {
+      setloading(true)
       const logIn = await fetch("https://ytbackend-awfu.onrender.com/api/v1/users/login", {
         method: "POST",
         credentials: "include",
@@ -37,15 +40,22 @@ const LoginCom = () => {
       if (res.success === false) {
         notifyE("Enter Valid Email And Password:(");
       } else {
+        setloading(false)
         notifyS("Login Successfully:)");
         navigate("/");
         localStorage.setItem("token", res.data.accessToken);
         dispatch(addUser({ user: res.data.user }));
       }
     } catch (error) {
+      setloading(false)
       notifyE("SomeThings Went wrong:(");
     }
+
   };
+
+  if(loading){
+    return <Comloader/>
+  }
 
   return (
     <div className="h-[50vh]  mt-14  flex flex-col justify-center py-12 sm:px-6 lg:px-8">

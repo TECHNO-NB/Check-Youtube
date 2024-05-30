@@ -5,8 +5,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Cookies from "js-cookie";
-import { useSelector } from "react-redux";
-import {Oval} from "react-loader-spinner"
+import { useSelector } from "react-redux"
+import Comloader from "../components/loader/Comloader";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -35,14 +35,7 @@ const Home = () => {
   }, []);
 
   if(loader){
-    return    <div className="flex items-center justify-center h-[100vw] md:h-[30vw]" > <Oval  visible={true}
-    height="50"
-    width="150"
-    color="red"
-    ariaLabel="oval-loading"
-    wrapperStyle={{}}
-    wrapperClass=""
-    /></div>
+    return <Comloader/>
   }
   return (
     <div className="bg-gray-800  w-[100vw]">

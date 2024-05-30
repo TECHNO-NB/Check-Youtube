@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Loader from "../components/Loader";
+import Comloader from "../components/loader/Comloader";
 
 const RegisterCom = () => {
   const notifyE = (msg) => toast.error(msg);
@@ -36,15 +37,19 @@ const RegisterCom = () => {
         "https://ytbackend-awfu.onrender.com/api/v1/users/register",
         formData
       );
-
-      setloading(false);
+ setloading(false);
       notifyS(registerData.data.data.message);
       navigate("/login");
     } catch (error) {
+      setloading(false)
       notifyE("Somethings Wrongs:(");
-      console.log(error);
+    
     }
   };
+
+  if(loading){
+    return <Comloader/>
+  }
 
   return (
     <div className="h-[88vh]   mt-4  flex flex-col justify-center py-12 sm:px-6 lg:px-8 md:h-[70vh]">
