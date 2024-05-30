@@ -35,7 +35,7 @@ const Home = () => {
   }, []);
 
   if(loader){
-    return    <div className="flex items-center justify-center h-[100vw]" > <Oval  visible={true}
+    return    <div className="flex items-center justify-center h-[100vw] md:h-[30vw]" > <Oval  visible={true}
     height="50"
     width="150"
     color="red"

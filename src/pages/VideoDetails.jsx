@@ -16,8 +16,6 @@ const location=useLocation();
      (async()=>{
        const res=await axios.get(`https://ytbackend-awfu.onrender.com/${location.state.videoId}`);
        setVideo(res.data.data)
-     
-       
         })()
     }, [])
 
