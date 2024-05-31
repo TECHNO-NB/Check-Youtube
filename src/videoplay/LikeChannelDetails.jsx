@@ -1,7 +1,7 @@
 import React from "react";
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
-import logo from "../assets/logo2.jpeg";
+
 
 const LikeChannelDetails = () => {
   return (

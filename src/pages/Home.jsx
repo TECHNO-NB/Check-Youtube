@@ -36,7 +36,7 @@ const Home = () => {
   }, []);
 
   if(loader){
-    return <Comloader/>
+    return <Comloader/> 
   }
   return (
     <div className="bg-gray-800  w-[100vw]">

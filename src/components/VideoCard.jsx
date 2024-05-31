@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import img3 from "../assets/logo4.jpeg";
 const VideoCard = (videoData) => {
   const navigate = useNavigate();
 
