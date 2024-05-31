@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Cookies from "js-cookie";
 import { useSelector } from "react-redux"
 import Comloader from "../components/loader/Comloader";
+import Uploadloader from "../components/uploadloader/Uploadloader";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -42,6 +43,7 @@ const Home = () => {
   
       <Sidebar />
       <div className="pl-[0.0em] grid grid-cols-1 w-[80vw] sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4   md:gap-x-[18em] md:pl-[16.5em]">
+        <Uploadloader/>
  {data.length > 0 &&
           data.map((videoData) => (
             <VideoCard key={videoData._id} data={videoData} />
