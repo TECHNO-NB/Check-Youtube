@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { TailSpin, Hourglass } from "react-loader-spinner";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
+import Uploadloader from "./uploadloader/Uploadloader";
+import { showhidemodal } from "../context/ModalContext";
 
 const UploadVideos = () => {
   const navigate = useNavigate();
@@ -17,10 +19,12 @@ const UploadVideos = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const {modal,setModal}=useContext(showhidemodal)
 
   const uploadVideo = async (e) => {
     try {
       setIsLoading(true);
+      setModal(true)
       e.preventDefault();
       const formData = new FormData();
       formData.append("video", video);
@@ -40,13 +44,18 @@ const UploadVideos = () => {
         }
       );
       setIsLoading(true);
+      setModal(true)
+
       notifyS("Uploaded Video Successfully :)");
       navigate("/");
       console.log(uploadVideoToserver.data);
       setIsLoading(false);
+      setModal(false)
+
     } catch (error) {
       notifyE("Network Connection Or Server Errors:(");
       setIsLoading(false);
+      setModal(false)
     }
   };
   return (
@@ -64,17 +73,8 @@ const UploadVideos = () => {
             onSubmit={(e) => uploadVideo(e)}
           >
             <div>
-              {isLoading ? (
-                <Hourglass
-                  className="items-center ml-40"
-                  visible={true}
-                  height="40"
-                  width="40"
-                  ariaLabel="hourglass-loading"
-                  wrapperStyle={{}}
-                  wrapperClass=""
-                  colors={["#306cce", "#72a1ed"]}
-                />
+              {modal ? (
+               <Uploadloader/>
               ) : null}
 
               <label
