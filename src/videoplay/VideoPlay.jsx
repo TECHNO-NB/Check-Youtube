@@ -1,17 +1,18 @@
 import React from "react";
 import LikeChannelDetails from "./LikeChannelDetails";
 import axios from "axios";
+import Comloader from "../components/loader/Comloader";
 
 const VideoPlay = ({ data }) => {
   if (!data || data === null) {
-    return <h1>No Data</h1>;
+    return <Comloader/>
   }
   const increasedViews = async (videoId) => {
     try {
       const token = localStorage.getItem("token");
       console.log(token);
       const res = await axios.post(
-        `https://ytbackend-awfu.onrender.com/${videoId}`,
+        `https://ytbackend-awfu.onrender.com/api/v1/videoviews/${videoId}`,
         {},
         {
           headers: {
