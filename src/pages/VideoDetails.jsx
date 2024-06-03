@@ -12,10 +12,12 @@ const location=useLocation();
  if(location.state.videoId==null){
     console.log("nothings")
   }else{
+    console.log(location.state.videoId)
     useEffect(() => {
      (async()=>{
-       const res=await axios.get(`https://ytbackend-awfu.onrender.com/${location.state.videoId}`);
+       const res=await axios.get(`https://ytbackend-awfu.onrender.com/api/v1/getvideobyid/${location.state.videoId}`);
        setVideo(res.data.data)
+       
         })()
     }, [])
 
