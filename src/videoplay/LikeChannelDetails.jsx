@@ -4,13 +4,14 @@ import { AiOutlineDislike } from "react-icons/ai";
 import logo from "../assets/logo.svg"
 
 
-const LikeChannelDetails = () => {
+const LikeChannelDetails = ({owner}) => {
+
   return (
     <div className="w-full mt-2 border-2 text-white pb-2">
       {/* head */}
       <div className="flex justify-between px-1 py-2 ">
         <div className="text-[1.5vh]">
-          <h1 className="text-[1.1em]">JavaScripts Fundamantails:</h1>
+          <h1 className="text-[1.1em]">{owner.data.title}:</h1>
           <p className="text-gray-200">30,164 Views ·18 hours ago</p>
         </div>
         <div className="flex gap-2">
@@ -32,7 +33,7 @@ const LikeChannelDetails = () => {
         <div className="flex gap-1">
           <img className="rounded-[50%] w-10" src={logo} alt="logo" />
           <div className="flex flex-col gap-0">
-            <h4>React Patterns</h4>
+            <h4>{owner.data.owner.fullName}</h4>
             <p className="text-[1.5vh] text-gray-200">757K Subscribers</p>
           </div>
         </div>
@@ -48,7 +49,7 @@ const LikeChannelDetails = () => {
         <hr className="mt-2" />
         <details className="text-[1.2vh] px-2">
           <summary>
-            🚀 Dive into the world of React with our latest tutorial series:
+            🚀 {owner.data.description }:
           </summary>
           <p>
             Whether you're a seasoned developer or just starting out, this

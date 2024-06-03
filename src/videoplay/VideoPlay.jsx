@@ -7,6 +7,8 @@ const VideoPlay = ({ data }) => {
   if (!data || data === null) {
     return <Comloader/>
   }
+
+  console.log(data)
   const increasedViews = async (videoId) => {
     try {
       const token = localStorage.getItem("token");
@@ -37,7 +39,7 @@ const VideoPlay = ({ data }) => {
           increasedViews(data._id);
         }}
       />
-      <LikeChannelDetails />
+      <LikeChannelDetails owner={{data}}/>
     </div>
   );
 };
