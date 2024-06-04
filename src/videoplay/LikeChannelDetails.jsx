@@ -49,7 +49,7 @@ const LikeChannelDetails = ({owner}) => {
         <hr className="mt-2" />
         <details className="text-[1.2vh] px-2">
           <summary>
-            🚀 {owner.data.description }:
+            🚀 {owner.data.description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }:
           </summary>
           <p>
             Whether you're a seasoned developer or just starting out, this
