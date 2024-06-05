@@ -4,7 +4,7 @@ import { ProgressBar } from "react-loader-spinner";
 
 const Loading = () => {
     return (
-    <div className=" w-[100vw] h-[100vh] flex items-center justify-center text-2xl text-center text-white">
+    <div className=" w-[100vw] h-[80vh]  flex items-center justify-center text-2xl text-center text-white md:h-[100vw]">
       <ProgressBar
         visible={true}
         height="200"

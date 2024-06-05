@@ -3,7 +3,7 @@ import logo from "../assets/logo.svg";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import Loader from "../components/Loader";
+
 import Comloader from "../components/loader/Comloader";
 
 const RegisterCom = () => {
