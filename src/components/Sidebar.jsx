@@ -20,7 +20,7 @@ const Sidebar = () => {
       <div
         className={`fixed top-16 ${
           open ? "left-[-30em]" : "left-[0em]"
-        } bg-none transition-all z-20 bg-gray-800 w-[225px] h-[100vh] border-r-2 border-white md:left-[0em] md:w-[263px] md:h-[100vh]`}
+        } bg-none transition-all z-20 bg-gray-800 w-[225px] h-[96vh] border-r-2 border-white md:left-[0em] md:w-[263px] md:h-[100vh]`}
       >
         <div className=" mt-[9px] flex flex-col items-center text-center gap-[7px] border-x-5 border-red-400 ">
           <div
