@@ -72,7 +72,7 @@ const Sidebar = () => {
           {/* pc end */}
 
           {/* For mobile */}
-          <div className="w-full absolute top-[100%] flex flex-col gap-2 items-center md:hidden  ">
+          <div className="w-full absolute top-[100%]  bottom-0 flex flex-col gap-2 items-center md:hidden  ">
             <div onClick={()=>handleNavigate("/login")} className=" flex items-center py-[5px]  justify-center  rounded-sm text-white border-2 w-[95%]  gap-4 text-[1.2em] cursor-pointer hover:bg-purple-800">
               <span>Log in</span>
             </div>
