@@ -22,7 +22,7 @@ const VideoCard = (videoData) => {
       <div className="flex flex-col items-center gap-2 w-[100%]  cursor-pointer ">
         <div className="relative">
           <img
-            className="w-[100%]"
+            className="w-[100%] "
             onClick={() => VideoDetails(videoData.data._id)}
             src={videoData.data.thumbnail}
           ></img>
