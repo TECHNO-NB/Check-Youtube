@@ -7,7 +7,8 @@ const VideoCard = (videoData) => {
     navigate("/videodetails", { state: { videoId: videoId } });
   };
 
-  
+
+
   const durationInSeconds = videoData.data.duration;
  const hours = Math.floor(durationInSeconds / 3600);
   const minutes = Math.floor((durationInSeconds % 3600) / 60);
@@ -33,6 +34,7 @@ const VideoCard = (videoData) => {
         <div className="w-full">
           <div className="flex gap-2">
             <img
+            onClick={()=> navigate(`/otherprofile/${videoData.data.owner.username}`)}
               className="w-10 h-10 rounded-[50%]"
               src={videoData.data.owner.avatar}
             />

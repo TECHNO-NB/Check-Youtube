@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import ProtectedRoute from "./proctedroute/ProctedRoute";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
+import OtherProfile from "./pages/OtherProfile";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
           ></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
+          <Route path="/otherprofile/:username" element={<OtherProfile />}></Route>
           <Route
             path="/profile"
             element={
