@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { FaUserPlus } from "react-icons/fa";
-import { useSelector } from "react-redux";
 import Videos from "../profileComponents/Videos";
 import Playlist from "../profileComponents/Playlist";
 import Tweets from "../profileComponents/Tweets";
@@ -10,8 +9,8 @@ import axios from "axios";
 const OtherProfileCom = ({ data }) => {
   const [activeButton, setActiveButton] = useState("Videos");
   const [otherdata, setOtherdata] = useState({});
-  console.log(data.username);
-  if (!data) {
+
+  if (!data.username) {
     return (
       <h1 className="text-center text-3xl mt-40 text-white">User Not Found</h1>
     );
@@ -36,26 +35,52 @@ const OtherProfileCom = ({ data }) => {
     }
   };
 
-  useEffect(() => {
-    (async () => {
-      const otherData = await axios.post(
-        `https://ytbackend-awfu.onrender.com/api/v1/users/userchannel/${data.username}`,
-        {},
+  const addSubscriber = async () => {
+    try {
+      const response = await axios.post(
+        `https://ytbackend-awfu.onrender.com/api/v1/subscriptions`,
+        {
+          channel: otherdata._id,
+        },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },
         }
       );
-      setOtherdata(otherData.data.data);
-      console.log(otherData.data.data);
-    })();
+      console.log(response.data.data);
+      setOtherdata((prevdata)=> [...prevdata, ...response.data.data])
+    } catch (error) {
+      console.error("Error message:", error);
+    }
+  };
+
+  useEffect(() => {
+    const fetchOtherData = async () => {
+      try {
+        const response = await axios.post(
+          `https://ytbackend-awfu.onrender.com/api/v1/users/userchannel/${data.username}`,
+          {},
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        );
+        setOtherdata(response.data.data);
+        console.log(response.data.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchOtherData();
   }, []);
 
   return (
     <div className="main">
       <div className="div">
-        <div className="bg-white w-[100vw] h-[16vh] rounded-[10px] md:w-[81vw] md:h-[35vh] ">
+        <div className="bg-white w-[100vw] h-[16vh] rounded-[10px] md:w-[81vw] md:h-[35vh]">
           {otherdata && (
             <img
               src={otherdata.coverImage}
@@ -65,7 +90,6 @@ const OtherProfileCom = ({ data }) => {
           )}
         </div>
         <div className="flex justify-between">
-          {/* Left content: channel name */}
           <div className="flex gap-2">
             <div className="w-[5em] h-[5em] ml-2 bg-white border-black border-2 rounded-full mt-[-25px] md:w-[8em] md:h-[8em] md:ml-0">
               {otherdata && (
@@ -89,8 +113,10 @@ const OtherProfileCom = ({ data }) => {
             </div>
           </div>
 
-          {/* Right content: subscribed */}
-          <div className="w-26 h-10 text-center gap-1 px-2 rounded-md bg-purple-600 mr-2 mt-3 md:mt-7 md:mr-[10em] flex items-center justify-center hover:bg-red-200">
+          <div
+            className="w-26 h-10 text-center gap-1 px-2 rounded-md bg-purple-600 mr-2 mt-3 md:mt-7 md:mr-[10em] flex items-center justify-center hover:bg-red-200"
+            onClick={addSubscriber}
+          >
             <FaUserPlus />
             <button className="text-[15px] font-bold py-1 rounded-md md:text-[20px]">
               {otherdata.isSubscribed ? "Subscribed" : "Subscribe"}
@@ -98,7 +124,6 @@ const OtherProfileCom = ({ data }) => {
           </div>
         </div>
 
-        {/* Profile Page Buttons */}
         <div className="flex w-[100vw] justify-around gap-2 md:w-[81vw] px-1 mt-6 border-b-2 md:px-0 text-white">
           {["Videos", "Playlist", "Tweets", "Subscribed"].map((btn) => (
             <button
