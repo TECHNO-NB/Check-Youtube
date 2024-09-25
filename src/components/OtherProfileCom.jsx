@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useCallback } from "react";
 import { FaUserPlus } from "react-icons/fa";
 import Videos from "../profileComponents/Videos";
 import Playlist from "../profileComponents/Playlist";
@@ -36,6 +36,7 @@ const OtherProfileCom = ({ data }) => {
   };
 
   const addSubscriber = async () => {
+    alert("hello")
     try {
       const response = await axios.post(
         `https://ytbackend-awfu.onrender.com/api/v1/subscriptions`,
@@ -48,14 +49,14 @@ const OtherProfileCom = ({ data }) => {
           },
         }
       );
-      console.log(response.data.data);
-      setOtherdata((prevdata)=> [...prevdata, ...response.data.data])
-    } catch (error) {
+           window.location.reload();
+       } catch (error) {
       console.error("Error message:", error);
     }
-  };
 
+  }
   useEffect(() => {
+  
     const fetchOtherData = async () => {
       try {
         const response = await axios.post(
@@ -75,7 +76,7 @@ const OtherProfileCom = ({ data }) => {
     };
 
     fetchOtherData();
-  }, []);
+  }, [data.username]);
 
   return (
     <div className="main">
@@ -115,7 +116,7 @@ const OtherProfileCom = ({ data }) => {
 
           <div
             className="w-26 h-10 text-center gap-1 px-2 rounded-md bg-purple-600 mr-2 mt-3 md:mt-7 md:mr-[10em] flex items-center justify-center hover:bg-red-200"
-            onClick={addSubscriber}
+            onClick={()=>addSubscriber()}
           >
             <FaUserPlus />
             <button className="text-[15px] font-bold py-1 rounded-md md:text-[20px]">

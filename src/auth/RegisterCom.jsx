@@ -34,21 +34,20 @@ const RegisterCom = () => {
       formData.append("username", username);
 
       const registerData = await axios.post(
-        "https://ytbackend-awfu.onrender.com/api/v1/users/register",
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/users/register`,
         formData
       );
- setloading(false);
+      setloading(false);
       notifyS(registerData.data.data.message);
       navigate("/login");
     } catch (error) {
-      setloading(false)
+      setloading(false);
       notifyE("Somethings Wrongs:(");
-    
     }
   };
 
-  if(loading){
-    return <Comloader/>
+  if (loading) {
+    return <Comloader />;
   }
 
   return (

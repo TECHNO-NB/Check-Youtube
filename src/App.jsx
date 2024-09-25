@@ -12,11 +12,13 @@ import ProtectedRoute from "./proctedroute/ProctedRoute";
 import Register from "./pages/Register";
 import Profile from "./pages/Profile";
 import OtherProfile from "./pages/OtherProfile";
+import UserVerfier from "./components/UserVerfier";
 
 function App() {
   return (
     <>
       <BrowserRouter>
+        <UserVerfier />
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />}></Route>
@@ -31,13 +33,16 @@ function App() {
           ></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
-          <Route path="/otherprofile/:username" element={<OtherProfile />}></Route>
+          <Route
+            path="/otherprofile/:username"
+            element={<OtherProfile />}
+          ></Route>
           <Route
             path="/profile"
             element={
               <ProtectedRoute>
                 <Profile />
-                </ProtectedRoute>
+              </ProtectedRoute>
             }
           ></Route>
           <Route path="*" element={<NotFoundPage />}></Route>

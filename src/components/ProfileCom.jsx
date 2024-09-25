@@ -9,8 +9,8 @@ import Subscribed from "../profileComponents/Subscribed";
 const ProfileCom = () => {
   const [activeButton, setActiveButton] = useState("Videos");
 
-  const items = useSelector((state) => state.user);
-
+  const user = useSelector((state) => state.login);
+console.log(user)
   const activeCheck = (buttonName) => {
     setActiveButton(buttonName);
   };
@@ -30,13 +30,13 @@ const ProfileCom = () => {
     }
   };
 
-  if (!items || !items.user) {
+  if (!user) {
     return (
       <h1 className="text-center text-3xl mt-40 text-white">User Not Login</h1>
     );
   }
 
-  const { coverImage, avatar,fullName,username } = items.user;
+  const { coverImage, avatar,fullName,username } = user;
  
 
   return (

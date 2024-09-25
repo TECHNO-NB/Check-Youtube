@@ -3,14 +3,13 @@ import logo from "../assets/logo.svg";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { addUser } from "../redux/UserSlice";
-import { authCheck } from "../redux/LoginCheck";
 import Comloader from "../components/loader/Comloader";
+import { login } from "../redux/LoginSlice";
 
 const LoginCom = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading,setloading]=useState(false)
+  const [loading, setloading] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -23,38 +22,41 @@ const LoginCom = () => {
       notifyE("Email And Password Is Required:(");
     }
     try {
-      setloading(true)
-      const logIn = await fetch("https://ytbackend-awfu.onrender.com/api/v1/users/login", {
-        method: "POST",
-        credentials: "include",
+      setloading(true);
+      
+      const logIn = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/users/login`,
+        {
+          method: "POST",
+          credentials: "include",
 
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      });
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            password,
+          }),
+        }
+      );
       const res = await logIn.json();
       if (res.success === false) {
         notifyE("Enter Valid Email And Password:(");
       } else {
-        setloading(false)
+        setloading(false);
         notifyS("Login Successfully:)");
         navigate("/");
         localStorage.setItem("token", res.data.accessToken);
-        dispatch(addUser({ user: res.data.user }));
+        dispatch(login(res.data.user));
       }
     } catch (error) {
-      setloading(false)
+      setloading(false);
       notifyE("SomeThings Went wrong:(");
     }
-
   };
 
-  if(loading){
-    return <Comloader/>
+  if (loading) {
+    return <Comloader />;
   }
 
   return (

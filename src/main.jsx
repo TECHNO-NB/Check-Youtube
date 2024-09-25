@@ -1,28 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
-import './index.css';
-import GlobalContext from './context/GlobalContext.jsx';
-import { Provider } from 'react-redux';
-import { store } from './redux/Store.jsx';
-import { persistStore } from 'redux-persist';
-import { PersistGate } from 'redux-persist/integration/react';
-import Loading from './components/Loading.jsx';
-import ModalContext from './context/ModalContext.jsx';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
+import GlobalContext from "./context/GlobalContext.jsx";
+import { Provider } from "react-redux";
+import ModalContext from "./context/ModalContext.jsx";
+import store from "./redux/Store.jsx";
 
-// Create the persistor
-const persistor = persistStore(store);
-
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
-      <PersistGate loading={<Loading/>} persistor={persistor}>
-        <ModalContext>
+      <ModalContext>
         <GlobalContext>
           <App />
         </GlobalContext>
-        </ModalContext>
-      </PersistGate>
+      </ModalContext>
     </Provider>
-  </React.StrictMode>,
+  </React.StrictMode>
 );
