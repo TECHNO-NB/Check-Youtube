@@ -1,11 +1,13 @@
 import axios from "axios";
-import React, { useEffect } from "react";
+import  { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/LoginSlice";
+import { useNavigate } from "react-router-dom";
 
 const UserVerfier = () => {
   const user = useSelector((state) => state.login);
   const dispatch = useDispatch();
+  const navigate=useNavigate()
   useEffect(() => {
     try {
       const verfiyUser = async () => {
@@ -17,6 +19,7 @@ const UserVerfier = () => {
           console.log("error");
         }
         dispatch(login(res.data.data.user));
+        navigate("/")
       };
       if (!user.username || !user) {
         verfiyUser();
@@ -24,7 +27,7 @@ const UserVerfier = () => {
     } catch (error) {
       console.log(error);
     }
-  }, [dispatch,user.username]);
+  }, [dispatch, user.username,navigate]);
 
   return null;
 };

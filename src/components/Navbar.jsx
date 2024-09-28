@@ -22,7 +22,7 @@ const Navbar = () => {
       <div className="bg-gray-800 border-2 h-9 w-[14em] flex items-center px-0 md:px-2 md:w-[35em]">
         <IoSearchOutline className="text-white ml-2 md:ml-0" />
         <input
-          className="bg-none ml-2 bg-gray-800 font-[40px] h-[100%] w-[100%]  text-white placeholder:text-white outline-none"
+          className="bg-none ml-2 bg-gray-800 font-[40px] h-[100%] w-[90%]  text-white placeholder:text-white outline-none"
           placeholder="Search "
           type="text"
         ></input>

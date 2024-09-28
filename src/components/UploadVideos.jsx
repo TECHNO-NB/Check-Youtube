@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { TailSpin, Hourglass } from "react-loader-spinner";
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import Uploadloader from "./uploadloader/Uploadloader";
@@ -10,7 +9,7 @@ import { showhidemodal } from "../context/ModalContext";
 const UploadVideos = () => {
   const navigate = useNavigate();
 
-  const items = useSelector((state) => state.user);
+  const items = useSelector((state) => state.login);
 
   const notifyE = (msg) => toast.error(msg);
   const notifyS = (msg) => toast.success(msg);
@@ -19,43 +18,35 @@ const UploadVideos = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const {modal,setModal}=useContext(showhidemodal)
+  const { modal, setModal } = useContext(showhidemodal);
 
   const uploadVideo = async (e) => {
     try {
       setIsLoading(true);
-      setModal(true)
+      setModal(true);
       e.preventDefault();
       const formData = new FormData();
       formData.append("video", video);
       formData.append("thumbnail", thumbnail);
       formData.append("title", title);
       formData.append("description", description);
-      formData.append("owner", items.user._id);
+      formData.append("owner", items._id);
 
       const uploadVideoToserver = await axios.post(
-        "https://ytbackend-awfu.onrender.com/api/v1/videoupload",
-        formData,
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-            credentials: "include",
-          },
-        }
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/videoupload`,
+        formData
       );
       setIsLoading(true);
-      setModal(true)
 
       notifyS("Uploaded Video Successfully :)");
       navigate("/");
       console.log(uploadVideoToserver.data);
       setIsLoading(false);
-      setModal(false)
-
+      setModal(false);
     } catch (error) {
       notifyE("Network Connection Or Server Errors:(");
       setIsLoading(false);
-      setModal(false)
+      setModal(false);
     }
   };
   return (
@@ -73,9 +64,7 @@ const UploadVideos = () => {
             onSubmit={(e) => uploadVideo(e)}
           >
             <div>
-              {modal ? (
-               <Uploadloader/>
-              ) : null}
+              {/* {modal ? <Uploadloader /> : null} */}
 
               <label
                 htmlFor="video"
