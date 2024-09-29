@@ -24,7 +24,7 @@ const Home = () => {
           `${import.meta.env.VITE_BACKEND_URL}/api/v1/getallvideos`
         );
         setData(response.data.data);
-        console.log(response.data.data)
+        console.log(response.data.data);
         setLoader(false);
       } catch (error) {
         notifyE("500 Error While Fetching Data...");
@@ -35,16 +35,21 @@ const Home = () => {
     fetchData();
   }, []);
 
-  if (loader) {
-    return <Comloader />;
-  }
-
   return (
-    <div className="bg-gray-800 min-h-screen w-full flex">
+    <div className="bg-gray-800  w-full flex">
+      {loader ? (
+        <div className="flex items-center justify-center w-[100vw]">
+          {" "}
+          <Comloader />{" "}
+        </div>
+      ) : null}
       <Sidebar />
-      <div className="ml-[0em] flex-1 p-3  grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:ml-[15.6em] md:gap-y-0">
+
+      <div className="ml-[0em] flex-1 p-3  grid  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 md:ml-[15.6em] md:gap-y-0 md:gap-x-4">
         {data.length > 0 &&
-          data.map((videoData) => <VideoCard  key={videoData._id} data={videoData} />)}
+          data.map((videoData) => (
+            <VideoCard key={videoData._id} data={videoData} />
+          ))}
       </div>
     </div>
   );

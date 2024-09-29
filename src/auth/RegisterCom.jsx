@@ -51,7 +51,7 @@ const RegisterCom = () => {
   }
 
   return (
-    <div className="h-[88vh]   mt-4  flex flex-col justify-center py-12 sm:px-6 lg:px-8 md:h-[70vh]">
+    <div className="h-[70vh]   mt-4  flex flex-col justify-center py-12 sm:px-6 lg:px-8 md:h-[70vh]">
       {loading ? <Loader /> : null}
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
         <img className="mx-auto h-20 pt-6 pb-0 w-auto" src={logo} alt="Logo" />
@@ -144,7 +144,7 @@ const RegisterCom = () => {
                 />
               </div>
             </div>
-
+{/* 
             <div>
               <label
                 htmlFor="avatar"
@@ -163,8 +163,8 @@ const RegisterCom = () => {
                   className="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-purple-300 rounded-md"
                 />
               </div>
-            </div>
-
+            </div> */}
+{/* 
             <div>
               <label
                 htmlFor="coverImage"
@@ -182,7 +182,7 @@ const RegisterCom = () => {
                   className="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-purple-300 rounded-md"
                 />
               </div>
-            </div>
+            </div> */}
 
             <div>
               <button

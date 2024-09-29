@@ -13,6 +13,7 @@ import Register from "./pages/Register";
 import Profile from "./pages/Profile";
 import OtherProfile from "./pages/OtherProfile";
 import UserVerfier from "./components/UserVerfier";
+import ForgetPassword from "./pages/ForgetPassword";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           ></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
+          <Route path="/forgetpassword" element={<ForgetPassword />}></Route>
           <Route
             path="/otherprofile/:username"
             element={<OtherProfile />}
