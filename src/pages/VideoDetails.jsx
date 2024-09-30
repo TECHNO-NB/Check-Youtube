@@ -8,20 +8,25 @@ import { useLocation } from "react-router-dom";
 
 const VideoDetails = () => {
   const [video, setVideo] = useState();
+  const [loading, setLoading] = useState(false);
   const location = useLocation();
   if (location.state.videoId == null) {
     console.log("nothings");
   } else {
     useEffect(() => {
       (async () => {
+        setLoading(true);
         const res = await axios.get(
           `${import.meta.env.VITE_BACKEND_URL}/api/v1/getvideobyid/${
             location.state.videoId
           }`
         );
+        setLoading(false);
         setVideo(res.data.data);
         console.log(res.data.data);
+        setLoading(false)
       })();
+
     }, []);
   }
 

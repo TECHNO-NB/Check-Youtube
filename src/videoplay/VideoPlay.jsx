@@ -31,7 +31,7 @@ const VideoPlay = ({ data }) => {
   const { videos, loading, error } = useVideosFetch("api/v1/getallvideos");
 
   return (
-    <div className="w-[100vw] flex flex-col  gap-1 px-2 justify-center md:w-[82vw] lg:flex-row">
+    <div className="w-[100vw] flex flex-col  gap-1 px-2 justify-center md:w-[82vw] md:flex-row">
       <div className="w-[100%]   lg:w-[70%] ">
         <video
           className=" "
