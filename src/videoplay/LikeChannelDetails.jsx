@@ -11,7 +11,7 @@ const LikeChannelDetails = ({owner}) => {
       {/* head */}
       <div className="flex justify-between px-1 py-2 ">
         <div className="text-[1.5vh]">
-          <h1 className="text-[1.1em]">{owner.data.title}:</h1>
+          <h1 className="text-[2em] font-bold">{owner.data.title}:</h1>
           <p className="text-gray-200">30,164 Views ·18 hours ago</p>
         </div>
         <div className="flex gap-2">
@@ -49,7 +49,7 @@ const LikeChannelDetails = ({owner}) => {
         <hr className="mt-2" />
         <details className="text-[1.2vh] px-2">
           <summary>
-            🚀 {owner.data.description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    }:
+            🚀 {owner.data.description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   }:
           </summary>
           <p>
             Whether you're a seasoned developer or just starting out, this

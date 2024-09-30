@@ -23,7 +23,10 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/videodetails" element={<VideoDetails />}></Route>
+          <Route
+            path="/videodetails/:videoId"
+            element={<VideoDetails />}
+          ></Route>
           <Route
             path="/uploadvideo"
             element={

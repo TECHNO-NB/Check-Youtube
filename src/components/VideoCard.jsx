@@ -5,7 +5,7 @@ const VideoCard = ({ data }) => {
   const navigate = useNavigate();
 
   const VideoDetails = (videoId) => {
-    navigate("/videodetails", { state: { videoId: videoId } });
+    navigate(`/videodetails/${videoId}`);
   };
 
   // Calculate video duration and format it
@@ -43,7 +43,7 @@ const VideoCard = ({ data }) => {
 
         {/* Video Title and Details */}
         <div className="flex flex-col w-full">
-          <h1 className="text-lg font-semibold">{"hello world"}</h1>
+          <h1 className="text-lg font-semibold">{data.title}</h1>
           <p className="text-sm text-gray-400">
             {data.views} Views · <span>44 minutes ago</span>
           </p>

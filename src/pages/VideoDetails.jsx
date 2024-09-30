@@ -4,13 +4,13 @@ import VideoPlay from "../videoplay/VideoPlay";
 import Comments from "../videoplay/Comments";
 
 import axios from "axios";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 const VideoDetails = () => {
   const [video, setVideo] = useState();
   const [loading, setLoading] = useState(false);
-  const location = useLocation();
-  if (location.state.videoId == null) {
+  const {videoId} = useParams();
+  if (videoId == null) {
     console.log("nothings");
   } else {
     useEffect(() => {
@@ -18,7 +18,7 @@ const VideoDetails = () => {
         setLoading(true);
         const res = await axios.get(
           `${import.meta.env.VITE_BACKEND_URL}/api/v1/getvideobyid/${
-            location.state.videoId
+            videoId
           }`
         );
         setLoading(false);
@@ -27,7 +27,7 @@ const VideoDetails = () => {
         setLoading(false)
       })();
 
-    }, []);
+    }, [videoId]);
   }
 
   return (

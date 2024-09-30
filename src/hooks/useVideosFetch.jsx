@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 
 const useVideosFetch = (url) => {
   const [videos, setData] = useState([]);
-  const [loader, setLoader] = useState(false);
+  const [load, setLoader] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -15,13 +15,14 @@ const useVideosFetch = (url) => {
           `${import.meta.env.VITE_BACKEND_URL}/${url}`
         );
         setData(response.data.data);
+        setLoader(false)
       })();
     } catch (error) {
       console.log(error);
       setError(true);
     }
   }, [url]);
-  return { videos, loader, error };
+  return { videos, load, error };
 };
 
 export default useVideosFetch;
