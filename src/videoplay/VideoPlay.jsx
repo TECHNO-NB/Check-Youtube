@@ -44,7 +44,7 @@ const VideoPlay = ({ data }) => {
         />
         <LikeChannelDetails owner={{ data }} />
       </div>
-      <div className="right w-[100%]  lg:w-[30%] mr-2 pr-4">
+      <div className="right w-[100%] md:h-[85vh]  lg:w-[30%] md:overflow-y-scroll md:mr-2 md:pr-4 scroll-me-80">
         {videos.length > 0 &&
           videos.map((videoData) => (
             <VideoCard key={videoData._id} data={videoData} />
