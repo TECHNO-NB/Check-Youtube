@@ -3,7 +3,7 @@ import { Oval } from "react-loader-spinner";
 
 const Comloader = () => {
   return (
-    <div className="fixed left-[50%] items-center justify-center w-[100vw] mt-40  text-center">
+    <div className="fixed left-[35%] sm:left-[50%] items-center justify-center w-[100vw] mt-40  text-center">
       {" "}
       <Oval
         visible={true}
