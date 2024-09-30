@@ -2,17 +2,17 @@ import React from "react";
 import LikeChannelDetails from "./LikeChannelDetails";
 import axios from "axios";
 import Comloader from "../components/loader/Comloader";
+import useVideosFetch from "../hooks/useVideosFetch";
+import VideoCard from "../components/VideoCard";
 
 const VideoPlay = ({ data }) => {
   if (!data || data === null) {
-    return <Comloader/>
+    return <Comloader />;
   }
-
-  console.log(data)
   const increasedViews = async (videoId) => {
     try {
       const token = localStorage.getItem("token");
-      console.log(token);
+
       const res = await axios.post(
         `https://ytbackend-awfu.onrender.com/api/v1/videoviews/${videoId}`,
         {},
@@ -28,18 +28,28 @@ const VideoPlay = ({ data }) => {
     }
   };
 
+  const { videos, loading, error } = useVideosFetch("api/v1/getallvideos");
+
   return (
-    <div className="w-full h-full flex items-center px-2 justify-center flex-col">
-      <video
-        className="w-[99.9%]  md:w-[100vw] "
-        src={data.videoFile}
-        autoPlay
-        controls
-        onPlay={() => {
-          increasedViews(data._id);
-        }}
-      />
-      <LikeChannelDetails owner={{data}}/>
+    <div className="w-[100vw] flex flex-col  gap-1 px-2 justify-center md:w-[82vw] lg:flex-row">
+      <div className="w-[100%]   lg:w-[70%] ">
+        <video
+          className=" "
+          src={data.videoFile}
+          autoPlay
+          controls
+          onPlay={() => {
+            increasedViews(data._id);
+          }}
+        />
+        <LikeChannelDetails owner={{ data }} />
+      </div>
+      <div className="right w-[100%]  lg:w-[30%] mr-2 pr-4">
+        {videos.length > 0 &&
+          videos.map((videoData) => (
+            <VideoCard key={videoData._id} data={videoData} />
+          ))}
+      </div>
     </div>
   );
 };

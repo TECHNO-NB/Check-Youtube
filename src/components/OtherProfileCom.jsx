@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useCallback } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { FaUserPlus } from "react-icons/fa";
 import Videos from "../profileComponents/Videos";
 import Playlist from "../profileComponents/Playlist";
@@ -36,10 +36,9 @@ const OtherProfileCom = ({ data }) => {
   };
 
   const addSubscriber = async () => {
-    alert("hello")
     try {
       const response = await axios.post(
-        `https://ytbackend-awfu.onrender.com/api/v1/subscriptions`,
+        `${import.meta.env.VITE_BACKEND_URL}api/v1/subscriptions`,
         {
           channel: otherdata._id,
         },
@@ -49,27 +48,21 @@ const OtherProfileCom = ({ data }) => {
           },
         }
       );
-           window.location.reload();
-       } catch (error) {
+      window.location.reload();
+    } catch (error) {
       console.error("Error message:", error);
     }
-
-  }
+  };
   useEffect(() => {
-  
     const fetchOtherData = async () => {
       try {
         const response = await axios.post(
-          `https://ytbackend-awfu.onrender.com/api/v1/users/userchannel/${data.username}`,
-          {},
-          {
-            headers: {
-              Authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
+          `${import.meta.env.VITE_BACKEND_URL}/api/v1/users/userchannel/${
+            data.username
+          }`
         );
         setOtherdata(response.data.data);
-        console.log(response.data.data);
+        console.log(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -116,7 +109,7 @@ const OtherProfileCom = ({ data }) => {
 
           <div
             className="w-26 h-10 text-center gap-1 px-2 rounded-md bg-purple-600 mr-2 mt-3 md:mt-7 md:mr-[10em] flex items-center justify-center hover:bg-red-200"
-            onClick={()=>addSubscriber()}
+            onClick={() => addSubscriber()}
           >
             <FaUserPlus />
             <button className="text-[15px] font-bold py-1 rounded-md md:text-[20px]">

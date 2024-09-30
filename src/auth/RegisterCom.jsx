@@ -144,7 +144,7 @@ const RegisterCom = () => {
                 />
               </div>
             </div>
-{/* 
+
             <div>
               <label
                 htmlFor="avatar"
@@ -163,8 +163,8 @@ const RegisterCom = () => {
                   className="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-purple-300 rounded-md"
                 />
               </div>
-            </div> */}
-{/* 
+            </div> 
+
             <div>
               <label
                 htmlFor="coverImage"
@@ -182,7 +182,7 @@ const RegisterCom = () => {
                   className="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-purple-300 rounded-md"
                 />
               </div>
-            </div> */}
+            </div> 
 
             <div>
               <button

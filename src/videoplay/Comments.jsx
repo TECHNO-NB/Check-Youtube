@@ -10,7 +10,7 @@ const Comments = () => {
     }
   };
   return (
-    <div className="w-full items-center mt-2 px-2 justify-center border-2 pb-2 text-white ">
+    <div className="items-center mt-2 px-2 justify-center border-2 pb-2 text-white ">
       <h4>All Comments</h4>
       <input
         onKeyDown={(e) => {

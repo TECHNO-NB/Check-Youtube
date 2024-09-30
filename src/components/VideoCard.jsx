@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import thumbnail from "../assets/thumbnail.jpg";
 
 const VideoCard = ({ data }) => {
   const navigate = useNavigate();
@@ -27,28 +26,28 @@ const VideoCard = ({ data }) => {
           className="w-full h-full object-cover rounded-lg"
           onClick={() => VideoDetails(data._id)}
           src={data.thumbnail}
-          alt={"fhh"}
+          alt={data.thumbnail}
         />
         <p className="absolute bottom-2 right-2 bg-black text-white px-2 py-1 rounded text-sm">
-          {"1:45"}
+          {formattedDuration}
         </p>
       </div>
 
       <div className="mt-4 w-full flex gap-2">
         <img
-          // onClick={() => navigate(`/otherprofile/${"dd"}}`)}
+          onClick={() => navigate(`/otherprofile/${data.owner.username}`)}
           className="w-10 h-10 rounded-full object-cover"
           src={data.owner.avatar}
-          alt={"anresh"}
+          alt={data.owner.avatar}
         />
 
         {/* Video Title and Details */}
         <div className="flex flex-col w-full">
           <h1 className="text-lg font-semibold">{"hello world"}</h1>
           <p className="text-sm text-gray-400">
-            {10} Views · <span>44 minutes ago</span>
+            {data.views} Views · <span>44 minutes ago</span>
           </p>
-          <p className="text-sm text-gray-400">{"Naresh Bhattarai"}</p>
+          <p className="text-sm text-gray-400">{data.owner.fullName}</p>
         </div>
       </div>
     </div>
