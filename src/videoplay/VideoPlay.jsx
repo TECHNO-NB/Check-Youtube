@@ -5,23 +5,17 @@ import Comloader from "../components/loader/Comloader";
 import useVideosFetch from "../hooks/useVideosFetch";
 import VideoCard from "../components/VideoCard";
 
-const VideoPlay = ({ data }) => {
+
+const VideoPlay = ( {data} ) => {
+
   if (!data || data === null) {
     return <Comloader />;
   }
+  
   const increasedViews = async (videoId) => {
     try {
-      const token = localStorage.getItem("token");
-
       const res = await axios.post(
-        `https://ytbackend-awfu.onrender.com/api/v1/videoviews/${videoId}`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            credentials: "include",
-          },
-        }
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/videoviews/${videoId}`
       );
     } catch (error) {
       console.error("Error increasing view count:", error);
@@ -32,7 +26,7 @@ const VideoPlay = ({ data }) => {
 
   return (
     <div className="w-[100vw] flex flex-col  gap-1 px-2 justify-center md:w-[82vw] lg:flex-row">
-      <div className="w-[100%]   lg:w-[70%] ">
+      <div className="w-[100%] h-[20%]   lg:w-[70%] ">
         <video
           className=" "
           src={data.videoFile}
@@ -42,7 +36,7 @@ const VideoPlay = ({ data }) => {
             increasedViews(data._id);
           }}
         />
-        <LikeChannelDetails owner={{ data }} />
+         <LikeChannelDetails owner={data } /> 
       </div>
       <div className="right w-[100%] md:h-[85vh] grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-1  lg:w-[30%] md:overflow-y-scroll lg:mr-2 lg:pr-4 scroll-me-80">
         {load ? <Comloader /> : null}

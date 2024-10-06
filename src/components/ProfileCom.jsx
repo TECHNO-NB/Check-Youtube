@@ -10,7 +10,6 @@ const ProfileCom = () => {
   const [activeButton, setActiveButton] = useState("Videos");
 
   const user = useSelector((state) => state.login);
-console.log(user)
   const activeCheck = (buttonName) => {
     setActiveButton(buttonName);
   };
@@ -36,8 +35,7 @@ console.log(user)
     );
   }
 
-  const { coverImage, avatar,fullName,username } = user;
- 
+  const { coverImage, avatar, fullName, username,totalSubscriber,totalSubscribedToOther, } = user;
 
   return (
     <div className="main">
@@ -71,7 +69,7 @@ console.log(user)
                 {`@${username}`}
               </h6>
               <p className="text-gray-300 mt-[-0px] text-[10px] md:text-[16px]">
-                600k Subscribers · 220 Subscribed
+                {totalSubscriber} Subscribers · {totalSubscribedToOther} Subscribed
               </p>
             </div>
           </div>

@@ -9,6 +9,7 @@ import axios from "axios";
 const OtherProfileCom = ({ data }) => {
   const [activeButton, setActiveButton] = useState("Videos");
   const [otherdata, setOtherdata] = useState({});
+  const [isSubscribed, setIsSUbscribed] = useState();
 
   if (!data.username) {
     return (
@@ -38,17 +39,13 @@ const OtherProfileCom = ({ data }) => {
   const addSubscriber = async () => {
     try {
       const response = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}api/v1/subscriptions`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/subscriptions`,
         {
           channel: otherdata._id,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
         }
       );
-      window.location.reload();
+
+      setIsSUbscribed(response.data);
     } catch (error) {
       console.error("Error message:", error);
     }
@@ -62,14 +59,13 @@ const OtherProfileCom = ({ data }) => {
           }`
         );
         setOtherdata(response.data.data);
-        console.log(response.data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
 
     fetchOtherData();
-  }, [data.username]);
+  }, [data.username, isSubscribed]);
 
   return (
     <div className="main">
