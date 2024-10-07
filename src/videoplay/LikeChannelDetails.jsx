@@ -4,8 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { AiOutlineFileAdd } from "react-icons/ai";
 import { LuUserPlus2 } from "react-icons/lu";
 
-
-
 const LikeChannelDetails = ({ owner }) => {
   const navigate = useNavigate();
   console.log("owner", owner);
@@ -16,20 +14,26 @@ const LikeChannelDetails = ({ owner }) => {
       {/* head */}
       <div className="flex justify-between px-1 py-2 ">
         <div className="text-[1.5vh]">
-          <h1 className=" text-[1em] md:text-[2em] font-bold">
-            {owner.title}:
-          </h1>
+          <h1 className=" text-xl md:text-[2em] font-bold">{owner.title}:</h1>
           <p className="text-gray-200">{owner.views} Views ·18 hours ago</p>
         </div>
-        <div className="flex gap-2 mb-3 items-center justify-center">
+        <div className="flex gap-2 mb-0 items-center   justify-center md:mb-3">
           <div className="flex h-6">
             <button className="border px-2 py-4   text-xl text-center  flex items-center gap-1 rounded">
-              {<AiOutlineLike  className={`text-2xl ${owner.isLike ? "text-blue-500" : "text-white"}`}/>} {owner.likescount} 
+              {
+                <AiOutlineLike
+                  className={`text-2xl ${
+                    owner.isLike ? "text-blue-500" : "text-white"
+                  }`}
+                />
+              }{" "}
+              {owner.likescount}
             </button>
           </div>
           <div className="">
             <button className="bg-white flex items-center justify-center gap-1 text-black mt-3 py-1 px-4 rounded">
-             {<AiOutlineFileAdd/>}save</button>
+              {<AiOutlineFileAdd />}save
+            </button>
           </div>
         </div>
       </div>
@@ -47,14 +51,15 @@ const LikeChannelDetails = ({ owner }) => {
           <div className="flex flex-col gap-0 mt-1">
             <h4>{owner.owners[0].fullName}</h4>
             <p className="text-[1.5vh] text-gray-200">
-              {owner.owners[0].subscriber || 0} Subscribers
+              {owner.subscribersCount} Subscribers
             </p>
           </div>
         </div>
 
         <div className="">
           <button className="bg-[#AE7AFF] gap-1 text-black font-bold border-[#4F4E4E] h border-b-8 border-r-8 hover:border-b-0 hover:border-r-0 ml-2 px-2 py-2 flex items-center">
-          {<LuUserPlus2 className="text-2xl "/>}  Subscribe
+            {<LuUserPlus2 className="text-2xl " />}{" "}
+            {owner.isSubscribed ? "Subscribed" : "Subscribe"}
           </button>
         </div>
       </div>
