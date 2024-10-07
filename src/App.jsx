@@ -14,6 +14,7 @@ import Profile from "./pages/Profile";
 import OtherProfile from "./pages/OtherProfile";
 import UserVerfier from "./components/UserVerfier";
 import ForgetPassword from "./pages/ForgetPassword";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -52,6 +53,7 @@ function App() {
           ></Route>
           <Route path="*" element={<NotFoundPage />}></Route>
         </Routes>
+        <Footer />
         <ToastContainer theme="dark" position="top-right" />
       </BrowserRouter>
     </>
