@@ -3,11 +3,16 @@ import { AiOutlineLike } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineFileAdd } from "react-icons/ai";
 import { LuUserPlus2 } from "react-icons/lu";
+import axios from "axios";
 
 const LikeChannelDetails = ({ owner }) => {
   const navigate = useNavigate();
-  console.log("owner", owner);
-  console.log(owner.owners[0].username);
+
+ const handleLikes=async (video)=>{
+  const likeVideo=await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/v1/likedvideo/${video}`);
+
+  console.log(likeVideo)
+ }
 
   return (
     <div className="w-full mt-2 border-2 px-1 text-white pb-2 md:px-4">
@@ -19,9 +24,10 @@ const LikeChannelDetails = ({ owner }) => {
         </div>
         <div className="flex gap-2 mb-0 items-center   justify-center md:mb-3">
           <div className="flex h-6">
-            <button className="border px-2 py-4   text-xl text-center  flex items-center gap-1 rounded">
+            <button onClick={()=>handleLikes(owner._id)} className="border px-2 py-4   text-xl text-center  flex items-center gap-1 rounded">
               {
                 <AiOutlineLike
+
                   className={`text-2xl ${
                     owner.isLike ? "text-blue-500" : "text-white"
                   }`}
@@ -51,7 +57,7 @@ const LikeChannelDetails = ({ owner }) => {
           <div className="flex flex-col gap-0 mt-1">
             <h4>{owner.owners[0].fullName}</h4>
             <p className="text-[1.5vh] text-gray-200">
-              {owner.subscribersCount} Subscribers
+              {owner.owners[0].subscriberCount} Subscribers
             </p>
           </div>
         </div>

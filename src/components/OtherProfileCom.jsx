@@ -44,7 +44,7 @@ const OtherProfileCom = ({ data }) => {
           channel: otherdata._id,
         }
       );
-
+      console.log("done");
       setIsSUbscribed(response.data);
     } catch (error) {
       console.error("Error message:", error);
