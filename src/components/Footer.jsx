@@ -4,7 +4,7 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 import { FaRegUserCircle } from "react-icons/fa";
 import { GoFileDirectory } from "react-icons/go";
 import { RiUserFollowLine } from "react-icons/ri";
-import { IoAccessibilityOutline, IoAddCircleOutline } from "react-icons/io5";
+
 import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
@@ -13,7 +13,7 @@ const Footer = () => {
     navigate(path);
   };
   return (
-    <div className="fixed flex justify-around   b-0 bottom-0 text-white text-2xl w-full border-t-2  bg-gray-800 h-14 sm:hidden">
+    <div className="fixed flex justify-around bottom-0 text-white text-2xl w-full border-t-2  bg-gray-800 h-[8vh] sm:hidden">
       <div
         onClick={() => {
           handleNavigate("/");

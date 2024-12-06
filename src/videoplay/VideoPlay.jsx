@@ -5,13 +5,11 @@ import Comloader from "../components/loader/Comloader";
 import useVideosFetch from "../hooks/useVideosFetch";
 import VideoCard from "../components/VideoCard";
 
-
-const VideoPlay = ( {data} ) => {
-
+const VideoPlay = ({ data, loading }) => {
   if (!data || data === null) {
     return <Comloader />;
   }
-  
+
   const increasedViews = async (videoId) => {
     try {
       const res = await axios.post(
@@ -27,23 +25,29 @@ const VideoPlay = ( {data} ) => {
   return (
     <div className="w-[100vw] flex flex-col  gap-1 px-2 justify-center md:w-[82vw] lg:flex-row">
       <div className="w-[100%] h-[20%]   lg:w-[70%] ">
-        <video
-          className=" "
-          src={data.videoFile}
-          autoPlay
-          controls
-          onPlay={() => {
-            increasedViews(data._id);
-          }}
-        />
-         <LikeChannelDetails owner={data } /> 
+        {loading ? (
+          <h1>loading</h1>
+        ) : (
+          <video
+            className=" "
+            src={data.videoFile}
+            autoPlay
+            controls
+            onPlay={() => {
+              increasedViews(data._id);
+            }}
+          />
+        )}
+        <LikeChannelDetails owner={data} />
       </div>
       <div className="right w-[100%] md:h-[85vh] grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-1  lg:w-[30%] md:overflow-y-scroll lg:mr-2 lg:pr-4 scroll-me-80">
         {load ? <Comloader /> : null}
         {videos.length > 0 &&
-          videos.map((videoData) => (
-            <VideoCard key={videoData._id} data={videoData} />
-          ))}
+          videos.map((videoData) => {
+            if (videoData._id != data._id) {
+              return <VideoCard key={videoData._id} data={videoData} />;
+            }
+          })}
       </div>
     </div>
   );

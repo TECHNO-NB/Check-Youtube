@@ -16,6 +16,7 @@ import UserVerfier from "./components/UserVerfier";
 import ForgetPassword from "./pages/ForgetPassword";
 import Footer from "./components/Footer";
 
+
 function App() {
   return (
     <>
@@ -39,6 +40,7 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/forgetpassword" element={<ForgetPassword />}></Route>
+        
           <Route
             path="/otherprofile/:username"
             element={<OtherProfile />}

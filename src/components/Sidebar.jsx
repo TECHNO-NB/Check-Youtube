@@ -61,7 +61,7 @@ const Sidebar = () => {
         </div>
 
         {/* sideBar Bottom Part */}
-        <div className="sidebar  flex flex-col  items-center gap-2">
+        <div className="sidebar  flex flex-col md:mt-5  items-center gap-2">
           {/* For Pic */}
           <div className="hidden  md:flex md:items-center md:w-full md:flex-col md:mt-[12%] ">
             <div className=" flex items-center py-[5px]  justify-center  rounded-sm text-white border-2 w-[95%]  gap-4 text-[1.2em] cursor-pointer hover:bg-purple-800">

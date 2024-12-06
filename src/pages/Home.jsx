@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import Comloader from "../components/loader/Comloader";
 import { showhidemodal } from "../context/ModalContext";
 import axios from "axios";
+import "../index.css";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -16,6 +17,8 @@ const Home = () => {
   const notifyE = (msg) => toast.error(msg);
   const notifyS = (msg) => toast.success(msg);
   const user = useSelector((state) => state.login);
+  const searchchar = useSelector((state) => state.search);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -35,6 +38,10 @@ const Home = () => {
     fetchData();
   }, []);
 
+  const filteredVideos = searchchar
+    ? data.filter((val) => val.title.toLowerCase().includes(searchchar))
+    : data;
+
   return (
     <div className="bg-gray-800  w-full flex">
       {loader ? (
@@ -45,11 +52,16 @@ const Home = () => {
       ) : null}
       <Sidebar />
 
-      <div className="ml-[0em] flex-1 p-3  grid  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 md:ml-[15.6em] md:gap-y-0 md:gap-x-4">
-        {data.length > 0 &&
-          data.map((videoData) => (
+      <div className="videoList ml-[0em] flex-1 p-3  grid  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2  xl:grid-cols-3 2xl:grid-cols-4 md:ml-[15.6em] md:gap-y-0 md:gap-x-4">
+      {filteredVideos.length > 0 ? (
+          filteredVideos.map((videoData) => (
             <VideoCard key={videoData._id} data={videoData} />
-          ))}
+          ))
+        ) : (
+          <h1 className="text-white text-center col-span-full">
+            No videos found
+          </h1>
+        )}
       </div>
     </div>
   );
