@@ -96,6 +96,10 @@ const LikeChannelDetails = ({ owner = {} }) => {
         </p>
       </details>
     </div>
+    {/* comments part */}
+    <div>
+    
+    </div>
  </div>
   );
 };

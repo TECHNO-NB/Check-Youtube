@@ -4,6 +4,7 @@ import axios from "axios";
 import Comloader from "../components/loader/Comloader";
 import useVideosFetch from "../hooks/useVideosFetch";
 import VideoCard from "../components/VideoCard";
+import Comments from "./Comments";
 
 const VideoPlay = ({ data, loading }) => {
   if (!data || data === null) {
@@ -39,6 +40,11 @@ const VideoPlay = ({ data, loading }) => {
           />
         )}
         <LikeChannelDetails owner={data} />
+        {/* {comments} */}
+        <div>
+          <Comments videoId={data._id} />
+        </div>
+        <div></div>
       </div>
       <div className="right w-[100%] md:h-[85vh] grid sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-1  lg:w-[30%] md:overflow-y-scroll lg:mr-2 lg:pr-4 scroll-me-80">
         {load ? <Comloader /> : null}
