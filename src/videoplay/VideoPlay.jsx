@@ -24,7 +24,7 @@ const VideoPlay = ({ data, loading }) => {
   const { videos, load, error } = useVideosFetch("api/v1/getallvideos");
 
   return (
-    <div className="w-[100vw] flex flex-col  gap-1 px-2 justify-center md:w-[82vw] lg:flex-row">
+    <div className="w-[100vw] flex flex-col overflow-y-scroll  gap-1 px-2 justify-center md:w-[82vw] lg:flex-row">
       <div className="w-[100%] h-[20%]   lg:w-[70%] ">
         {loading ? (
           <h1>loading</h1>
