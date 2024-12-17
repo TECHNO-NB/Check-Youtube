@@ -45,7 +45,7 @@ const Footer = () => {
 
       <div
         onClick={() => {
-          handleNavigate("/profile");
+          handleNavigate("/subscribers");
         }}
         className="flex flex-col items-center justify-center  text-center text-white  cursor-pointer hover:text-purple-800 "
       >

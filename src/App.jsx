@@ -15,7 +15,7 @@ import OtherProfile from "./pages/OtherProfile";
 import UserVerfier from "./components/UserVerfier";
 import ForgetPassword from "./pages/ForgetPassword";
 import Footer from "./components/Footer";
-
+import Subscribers from "./pages/Subscribers";
 
 function App() {
   return (
@@ -40,7 +40,7 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/forgetpassword" element={<ForgetPassword />}></Route>
-        
+
           <Route
             path="/otherprofile/:username"
             element={<OtherProfile />}
@@ -53,6 +53,16 @@ function App() {
               </ProtectedRoute>
             }
           ></Route>
+
+          <Route
+            path="/subscribers"
+            element={
+              <ProtectedRoute>
+                <Subscribers />
+              </ProtectedRoute>
+            }
+          ></Route>
+
           <Route path="*" element={<NotFoundPage />}></Route>
         </Routes>
         <Footer />

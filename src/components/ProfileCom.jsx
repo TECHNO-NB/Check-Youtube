@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaUserPlus } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import Videos from "../profileComponents/Videos";
 import Playlist from "../profileComponents/Playlist";
 import Tweets from "../profileComponents/Tweets";
 import Subscribed from "../profileComponents/Subscribed";
+import axios from "axios";
 
 const ProfileCom = () => {
   const [activeButton, setActiveButton] = useState("Videos");
+
+  
 
   const user = useSelector((state) => state.login);
   const activeCheck = (buttonName) => {
@@ -35,7 +38,14 @@ const ProfileCom = () => {
     );
   }
 
-  const { coverImage, avatar, fullName, username,totalSubscriber,totalSubscribedToOther, } = user;
+  const {
+    coverImage,
+    avatar,
+    fullName,
+    username,
+    totalSubscriber,
+    totalSubscribedToOther,
+  } = user;
 
   return (
     <div className="main">
@@ -69,7 +79,8 @@ const ProfileCom = () => {
                 {`@${username}`}
               </h6>
               <p className="text-gray-300 mt-[-0px] text-[10px] md:text-[16px]">
-                {totalSubscriber} Subscribers · {totalSubscribedToOther} Subscribed
+                {totalSubscriber} Subscribers · {totalSubscribedToOther}{" "}
+                Subscribed
               </p>
             </div>
           </div>
