@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Comloader from "../components/loader/Comloader";
 import { login } from "../redux/LoginSlice";
+import ButtonLoader from "../components/ButtonLoader";
 
 const LoginCom = () => {
   const [email, setEmail] = useState("");
@@ -55,9 +56,6 @@ const LoginCom = () => {
     }
   };
 
-  if (loading) {
-    return <Comloader />;
-  }
 
   return (
     <div className="h-[50vh]  mt-14  flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -127,7 +125,7 @@ const LoginCom = () => {
                 type="submit"
                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                Log in
+               {loading ? <ButtonLoader/> : 'Log in'} 
               </button>
             </div>
           </form>

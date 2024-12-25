@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
 import Uploadloader from "./uploadloader/Uploadloader";
 import { showhidemodal } from "../context/ModalContext";
+import ButtonLoader from "./ButtonLoader";
 
 const UploadVideos = () => {
   const navigate = useNavigate();
@@ -148,7 +149,7 @@ const UploadVideos = () => {
                 type="submit"
                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-purple-900 hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                Upload
+                {isLoading ? <ButtonLoader/> : 'Upload'}
               </button>
             </div>
           </form>

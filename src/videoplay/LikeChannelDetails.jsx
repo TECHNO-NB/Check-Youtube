@@ -3,6 +3,7 @@ import { AiOutlineLike, AiOutlineFileAdd } from "react-icons/ai";
 import { LuUserPlus2 } from "react-icons/lu";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import ButtonLoader from "../components/ButtonLoader";
 
 const LikeChannelDetails = ({ owner = {} }) => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const LikeChannelDetails = ({ owner = {} }) => {
   } = owner;
 
   const [likes, setLikes] = useState(likescount);
+  const [isloading, setIsloading] = useState(false);
 
   const handleLikes = async (videoId) => {
     try {
@@ -34,13 +36,16 @@ const LikeChannelDetails = ({ owner = {} }) => {
   };
 
   const handleSavePlayList = async (videoId) => {
+    setIsloading(true);
     try {
       const res = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/api/v1/create-playlist/${videoId}`
       );
       console.log(res.data);
+      setIsloading(false);
     } catch (error) {
       console.log(error);
+      setIsloading(false);
     }
   };
 
@@ -70,7 +75,7 @@ const LikeChannelDetails = ({ owner = {} }) => {
           </div>
           <div onClick={() => handleSavePlayList(owner._id)} className="">
             <button className="bg-white flex items-center justify-center gap-1 text-black mt-3 py-1 px-4 rounded">
-              {<AiOutlineFileAdd />}save
+              {<AiOutlineFileAdd />} {isloading ? <ButtonLoader/> : 'save' }
             </button>
           </div>
         </div>
