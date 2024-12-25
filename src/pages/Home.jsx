@@ -13,6 +13,7 @@ const Home = () => {
   const [data, setData] = useState([]);
   const [loader, setLoader] = useState(false);
   const { modal, setModal } = useContext(showhidemodal);
+  
 
   const notifyE = (msg) => toast.error(msg);
   const notifyS = (msg) => toast.success(msg);

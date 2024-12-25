@@ -50,7 +50,9 @@ const Sidebar = () => {
             <span>Upload Video</span>
           </div>
 
-          <div className=" flex items-center py-[5px]  rounded-sm text-white border-2 w-[95%]  gap-4 text-[1.2em] cursor-pointer hover:bg-purple-800 ">
+          <div onClick={()=>{
+            handleNavigate("/collections")
+          }}    className=" flex items-center py-[5px]  rounded-sm text-white border-2 w-[95%]  gap-4 text-[1.2em] cursor-pointer hover:bg-purple-800 ">
             <GoFileDirectory className="ml-2" />
             <span>Collections</span>
           </div>

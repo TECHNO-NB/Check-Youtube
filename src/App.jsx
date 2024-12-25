@@ -16,6 +16,7 @@ import UserVerfier from "./components/UserVerfier";
 import ForgetPassword from "./pages/ForgetPassword";
 import Footer from "./components/Footer";
 import Subscribers from "./pages/Subscribers";
+import Collections from "./pages/Collections";
 
 function App() {
   return (
@@ -37,6 +38,15 @@ function App() {
               </ProtectedRoute>
             }
           ></Route>
+          <Route
+            path="/collections"
+            element={
+              <ProtectedRoute>
+                <Collections />
+              </ProtectedRoute>
+            }
+          ></Route>
+
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/forgetpassword" element={<ForgetPassword />}></Route>
