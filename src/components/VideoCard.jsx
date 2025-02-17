@@ -19,11 +19,11 @@ const VideoCard = ({ data }) => {
     .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 
   return (
-    <div className="flex flex-col   items-center w-full  p-2 bg-gray-800 text-white rounded-lg shadow-lg cursor-pointer md:w-[330px] lg:w-[420px]   md:p-3">
+    <div className="flex flex-col   items-center w-full  p-2 bg-gray-800 text-white rounded-lg shadow-lg cursor-pointer    md:p-3">
       {/* Video Thumbnail */}
       <div className="relative w-full h-48 md:h-60">
         <img
-          className="w-full h-full object-cover rounded-lg"
+          className="w-full h-full object-fill rounded-lg"
           onClick={() => VideoDetails(data._id)}
           src={data.thumbnail}
           alt={data.thumbnail}

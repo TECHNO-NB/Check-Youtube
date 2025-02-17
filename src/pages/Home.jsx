@@ -13,7 +13,6 @@ const Home = () => {
   const [data, setData] = useState([]);
   const [loader, setLoader] = useState(false);
   const { modal, setModal } = useContext(showhidemodal);
-  
 
   const notifyE = (msg) => toast.error(msg);
   const notifyS = (msg) => toast.success(msg);
@@ -53,7 +52,8 @@ const Home = () => {
       ) : null}
       <Sidebar />
 
-      <div className="videoList ml-[0em] flex-1 p-3 pb-8  md:pb-0 grid  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2  xl:grid-cols-3 2xl:grid-cols-4 md:ml-[15.6em] md:gap-y-0 md:gap-x-4">
+      {/* flex-1  grid  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2  xl:grid-cols-3 2xl:grid-cols-4  md:gap-y-0  */}
+      <div className="videoList  md:gap-x-2 p-2 pb-8  md:pb-0 ml-[0em]  md:ml-[16em]">
         {filteredVideos.length > 0 ? (
           filteredVideos.map((videoData) => (
             <VideoCard key={videoData._id} data={videoData} />
