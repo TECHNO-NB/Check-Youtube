@@ -5,7 +5,7 @@ import Videos from "../profileComponents/Videos";
 import Playlist from "../profileComponents/Playlist";
 import Tweets from "../profileComponents/Tweets";
 import Subscribed from "../profileComponents/Subscribed";
-import axios from "axios";
+import "../index.css"
 
 const ProfileCom = () => {
   const [activeButton, setActiveButton] = useState("Videos");
@@ -50,12 +50,12 @@ const ProfileCom = () => {
   return (
     <div className="main">
       <div className="div">
-        <div className="bg-white w-[100vw] h-[16vh] rounded-[10px] md:w-[81vw] md:h-[35vh] ">
+        <div className="bg-white w-[100vw] overflow-hidden flex items-center justify-center bg-cover h-[16vh] rounded-[10px] md:w-[81vw] md:h-[35vh] ">
           {coverImage && (
             <img
               src={coverImage}
               alt="Cover Image"
-              className="bg-contain w-full h-full"
+              className="w-full h-full object-cover"
             />
           )}
         </div>
@@ -65,7 +65,7 @@ const ProfileCom = () => {
             <div className="w-[5em] h-[5em] ml-2 bg-white border-black border-2 rounded-full mt-[-25px] md:w-[8em] md:h-[8em] md:ml-0">
               {avatar && (
                 <img
-                  className="w-full h-full rounded-full"
+                  className="w-full h-full  rounded-full"
                   src={avatar}
                   alt="Profile"
                 />
@@ -78,7 +78,7 @@ const ProfileCom = () => {
               <h6 className="text-gray-300 mt-[-3px] text-[12px] md:text-[16px]">
                 {`@${username}`}
               </h6>
-              <p className="text-gray-300 mt-[-0px] text-[10px] md:text-[16px]">
+              <p className=" text-gray-300 mt-[-0px] text-[10px] md:text-[16px]">
                 {totalSubscriber} Subscribers · {totalSubscribedToOther}{" "}
                 Subscribed
               </p>
@@ -86,7 +86,7 @@ const ProfileCom = () => {
           </div>
 
           {/* Right content: subscribed */}
-          <div className="w-26 h-10 text-center gap-1 px-2 rounded-md bg-purple-600 mr-2 mt-3 md:mt-7 md:mr-[10em] flex items-center justify-center hover:bg-red-200">
+          <div className="btn w-26 h-10 text-center gap-1 px-2  bg-purple-600 mr-2 mt-3 md:mt-7 md:mr-[10em] flex items-center justify-center">
             <FaUserPlus />
             <button className="text-[15px] font-bold py-1 rounded-md md:text-[20px]">
               Subscribed

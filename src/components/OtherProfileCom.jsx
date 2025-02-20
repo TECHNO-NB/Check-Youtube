@@ -5,7 +5,7 @@ import Playlist from "../profileComponents/Playlist";
 import Tweets from "../profileComponents/Tweets";
 import Subscribed from "../profileComponents/Subscribed";
 import axios from "axios";
-
+import "../index.css";
 const OtherProfileCom = ({ data }) => {
   const [activeButton, setActiveButton] = useState("Videos");
   const [otherdata, setOtherdata] = useState({});
@@ -104,7 +104,7 @@ const OtherProfileCom = ({ data }) => {
           </div>
 
           <div
-            className="w-26 h-10 text-center gap-1 px-2 rounded-md bg-purple-600 mr-2 mt-3 md:mt-7 md:mr-[10em] flex items-center justify-center hover:bg-red-200"
+            className="btn w-26 h-10 text-center gap-1 px-2  bg-purple-600 mr-2 mt-3 md:mt-7 md:mr-[10em] flex items-center justify-center"
             onClick={() => addSubscriber()}
           >
             <FaUserPlus />
