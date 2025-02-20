@@ -1,13 +1,41 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const VideoCard = ({ data }) => {
   const navigate = useNavigate();
+  const [dateVideo, setDateVideo] = useState("");
 
   const VideoDetails = (videoId) => {
     navigate(`/videodetails/${videoId}`);
   };
 
+  const getUplodeDate = (date) => {
+    
+    const seconds = Math.floor((new Date() - new Date(date)) / 1000);
+
+
+    const intervals = {
+      year: 31536000,
+      month: 2592000,
+      week: 604800,
+      day: 86400,
+      hour: 3600,
+      minute: 60,
+    };
+
+    for (let [unit, value] of Object.entries(intervals)) {
+      const count = Math.floor(seconds / value);
+      if (count >= 1) {
+        return `${count} ${unit}${count > 1 ? "s" : ""} ago`;
+      }
+    }
+    return "Just now";
+  };
+
+  useEffect(() => {
+    const date = getUplodeDate(data.createdAt);
+    setDateVideo(date);
+  }, [data.createdAt]);
   // Calculate video duration and format it
   const durationInSeconds = data.duration;
   const hours = Math.floor(durationInSeconds / 3600);
@@ -45,7 +73,7 @@ const VideoCard = ({ data }) => {
         <div className="flex flex-col w-full">
           <h1 className=" text-lg font-semibold">{data.title}</h1>
           <p className="text-sm text-gray-400">
-            {data.views} Views · <span>44 minutes ago</span>
+            {data.views} Views · <span>{dateVideo}</span>
           </p>
           <p className="text-sm text-gray-400">{data.owner.fullName}</p>
         </div>

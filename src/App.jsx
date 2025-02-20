@@ -17,6 +17,7 @@ import ForgetPassword from "./pages/ForgetPassword";
 import Footer from "./components/Footer";
 import Subscribers from "./pages/Subscribers";
 import Collections from "./pages/Collections";
+import UpoldeNavLoader from "./components/uploadloader/UpoldeNavLoader";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       <BrowserRouter>
         <UserVerfier />
         <Navbar />
+        <UpoldeNavLoader/>
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route

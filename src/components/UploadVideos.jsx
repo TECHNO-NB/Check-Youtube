@@ -19,11 +19,10 @@ const UploadVideos = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const { modal, setModal } = useContext(showhidemodal);
+  const { modal, setModal, setVideoData } = useContext(showhidemodal);
 
   const uploadVideo = async (e) => {
     try {
-      setIsLoading(true);
       setModal(true);
       e.preventDefault();
       const formData = new FormData();
@@ -32,22 +31,15 @@ const UploadVideos = () => {
       formData.append("title", title);
       formData.append("description", description);
       formData.append("owner", items._id);
-
-      const uploadVideoToserver = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/v1/videoupload`,
-        formData
-      );
-      setIsLoading(true);
+      
+      console.log(formData)
+      setVideoData(formData);
 
       notifyS("Uploaded Video Successfully :)");
       navigate("/");
-      console.log(uploadVideoToserver.data);
-      setIsLoading(false);
-      setModal(false);
     } catch (error) {
       notifyE("Network Connection Or Server Errors:(");
-      setIsLoading(false);
-      setModal(false);
+    } finally {
     }
   };
   return (
@@ -149,7 +141,7 @@ const UploadVideos = () => {
                 type="submit"
                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-purple-900 hover:bg-purple-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                {isLoading ? <ButtonLoader/> : 'Upload'}
+                {modal ? <ButtonLoader /> : "Upload"}
               </button>
             </div>
           </form>
