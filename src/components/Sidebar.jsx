@@ -22,7 +22,7 @@ const Sidebar = () => {
           open ? "left-[-30em]" : "left-[0em]"
         } bg-none transition-all z-50 bg-gray-800 w-[225px] h-[90lvh]  border-r-2 border-white md:left-[0em] md:w-[263px] md:h-[100dvh]`}
       >
-        <div className=" mt-[0px] flex flex-col items-center text-center gap-[7px] border-x-5 border-red-400 ">
+        <div className=" mt-[0px] md:mt-[9px] flex flex-col items-center text-center gap-[7px] border-x-5 border-red-400 ">
           <div
             onClick={() => {
               handleNavigate("/");
