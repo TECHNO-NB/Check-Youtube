@@ -20,9 +20,9 @@ const Sidebar = () => {
       <div
         className={`fixed top-16 ${
           open ? "left-[-30em]" : "left-[0em]"
-        } bg-none transition-all z-50 bg-gray-800 w-[225px] h-[90vh]  border-r-2 border-white md:left-[0em] md:w-[263px] md:h-[100vh]`}
+        } bg-none transition-all z-50 bg-gray-800 w-[225px] h-[90lvh]  border-r-2 border-white md:left-[0em] md:w-[263px] md:h-[100dvh]`}
       >
-        <div className=" mt-[9px] flex flex-col items-center text-center gap-[7px] border-x-5 border-red-400 ">
+        <div className=" mt-[0px] flex flex-col items-center text-center gap-[7px] border-x-5 border-red-400 ">
           <div
             onClick={() => {
               handleNavigate("/");
@@ -76,7 +76,7 @@ const Sidebar = () => {
           {/* pc end */}
 
           {/* For mobile */}
-          <div className="w-full relative h-[30vw] top-[100%]  flex flex-col gap-2 justify-end items-center md:hidden  ">
+          <div className="w-full relative h-[16vh] top-[100%]  flex flex-col gap-2 justify-end items-center md:hidden  ">
             <div onClick={()=>handleNavigate("/login")} className=" flex items-center py-[5px]  justify-center  rounded-sm text-white border-2 w-[95%]  gap-4 text-[1.2em] cursor-pointer hover:bg-purple-800">
               <span>Log in</span>
             </div>

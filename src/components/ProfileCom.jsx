@@ -55,7 +55,7 @@ const ProfileCom = () => {
             <img
               src={coverImage}
               alt="Cover Image"
-              className="w-full h-full object-cover"
+              className=" aspect-video object-fill"
             />
           )}
         </div>
