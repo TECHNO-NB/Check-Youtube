@@ -16,18 +16,19 @@ const Sidebar = () => {
     setOpen(true);
   };
   return (
-    <>
+    
       <div
         className={`fixed top-16 ${
           open ? "left-[-30em]" : "left-[0em]"
-        } bg-none transition-all z-50 bg-gray-800 w-[225px] h-[90lvh]  border-r-2 border-white md:left-[0em] md:w-[263px] md:h-[100dvh]`}
+        } bg-none transition-all z-50 bg-gray-800 w-[225px] h-[89svh] flex flex-col justify-between text-center  border-r-2 border-white border-x-5 md:left-[0em] md:w-[263px] md:h-[90vh]`}
       >
-        <div className=" mt-[0px] md:mt-[9px] flex flex-col items-center text-center gap-[7px] border-x-5 border-red-400 ">
+        <div className=" flex flex-col items-center text-center gap-[7px]   ">
+        
           <div
             onClick={() => {
               handleNavigate("/");
             }}
-            className="flex items-center py-[5px] mt-0 rounded-sm text-white border-2 w-[95%]  gap-4 text-[1.2em] cursor-pointer hover:bg-purple-800 "
+            className="flex items-center py-[5px] mt-1 md:mt:2 rounded-sm text-white border-2 w-[95%]  gap-4 text-[1.2em] cursor-pointer hover:bg-purple-800 "
           >
             <AiOutlineHome className="ml-2" />
             <span>Home</span>
@@ -65,10 +66,10 @@ const Sidebar = () => {
         </div>
 
         {/* sideBar Bottom Part */}
-        <div className="sidebar  flex flex-col md:mt-5  items-center gap-2">
+        <div className="sidebar  flex flex-col  items-center gap-2">
           {/* For Pic */}
-          <div className="hidden  md:flex md:items-center md:w-full md:flex-col md:mt-[12%] ">
-            <div className=" flex items-center py-[5px]  justify-center  rounded-sm text-white border-2 w-[95%]  gap-4 text-[1.2em] cursor-pointer hover:bg-purple-800">
+          <div className="hidden  md:flex md:items-center md:w-[100%]  ">
+            <div className=" flex items-center py-[5px]  justify-center ml-[5px]  rounded-sm text-white border-2 w-[95%]  gap-4 text-[1.2em] cursor-pointer hover:bg-purple-800">
               <span>Settings</span>
             </div>
           </div>
@@ -76,7 +77,7 @@ const Sidebar = () => {
           {/* pc end */}
 
           {/* For mobile */}
-          <div className="w-full relative h-[16vh] top-[100%]  flex flex-col gap-2 justify-end items-center md:hidden  ">
+          <div className="w-full  flex flex-col gap-2  items-center md:hidden ">
             <div onClick={()=>handleNavigate("/login")} className=" flex items-center py-[5px]  justify-center  rounded-sm text-white border-2 w-[95%]  gap-4 text-[1.2em] cursor-pointer hover:bg-purple-800">
               <span>Log in</span>
             </div>
@@ -88,7 +89,7 @@ const Sidebar = () => {
           {/* mobile end */}
         </div>
       </div>
-    </>
+    
   );
 };
 

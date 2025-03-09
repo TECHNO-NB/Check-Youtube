@@ -49,11 +49,11 @@ const RegisterCom = () => {
 
  
   return (
-    <div className="h-[70vh]   mt-4  flex flex-col justify-center py-12 sm:px-6 lg:px-8 md:h-[70vh]">
+    <div className="h-[70vh]  mt-2  flex flex-col justify-center py-12 sm:px-6 lg:px-8 md:h-[70vh]">
       {loading ? <Loader /> : null}
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <img className="mx-auto h-20 pt-6 pb-0 w-auto md:mt-20" src={logo} alt="Logo" />
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-purple-800">
+        <img className="mx-auto h-14 sm:h-20 pt-2 pb-0 w-auto mt-4 md:mt-20" src={logo} alt="Logo" />
+        <h2 className="mt-2 text-center text-3xl font-extrabold text-purple-800">
           Register
         </h2>
       </div>
@@ -62,7 +62,7 @@ const RegisterCom = () => {
         <div className="bg-gray-800 py-0 px-4 shadow sm:rounded-lg sm:px-10">
           <form
             method="POST"
-            className="space-y-6"
+            className="space-y-4 md:space-y-6"
             onSubmit={(e) => registerUser(e)}
           >
             <div>
@@ -79,7 +79,7 @@ const RegisterCom = () => {
                   placeholder="Enter Your Username.."
                   onChange={(e) => setUsername(e.target.value)}
                   required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="appearance-none block w-full px-3  p-1 sm:p-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
             </div>
@@ -98,7 +98,7 @@ const RegisterCom = () => {
                   placeholder="Enter Your Fullname.."
                   onChange={(e) => setFullname(e.target.value)}
                   required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="appearance-none block w-full px-3 p-1 sm:p-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
             </div>
@@ -118,7 +118,7 @@ const RegisterCom = () => {
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   autoComplete="true"
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="appearance-none block w-full px-3 p-1 sm:p-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
             </div>
@@ -138,16 +138,17 @@ const RegisterCom = () => {
                   placeholder="Enter Your Password.."
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  className="appearance-none block w-full px-3 p-1 sm:p-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                 />
               </div>
             </div>
+   <div className="flex text-white">
 
             <div>
               <label
                 htmlFor="avatar"
                 className="block text-sm font-medium text-white"
-              >
+                >
                 Profile Pic
               </label>
               <div className="mt-1">
@@ -159,7 +160,7 @@ const RegisterCom = () => {
                   onChange={(e) => setAvatar(e.target.files[0])}
                   required
                   className="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-purple-300 rounded-md"
-                />
+                  />
               </div>
             </div> 
 
@@ -167,7 +168,7 @@ const RegisterCom = () => {
               <label
                 htmlFor="coverImage"
                 className="block text-sm font-medium text-white"
-              >
+                >
                 Cover Pic
               </label>
               <div className="mt-1">
@@ -178,7 +179,8 @@ const RegisterCom = () => {
                   type="file"
                   accept="image/*"
                   className="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-purple-300 rounded-md"
-                />
+                  />
+                  </div>
               </div>
             </div> 
 

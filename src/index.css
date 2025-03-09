@@ -15,10 +15,7 @@ body {
     overflow-x: hidden;
 }
 
-.sidebar {
-    position: relative;
-    top: 37.5%;
-}
+
 
 ::-webkit-scrollbar {
     display: none;
@@ -55,9 +52,3 @@ body {
 
 
 
-@media (max-width:600px) {
-    .sidebar {
-        position: relative;
-        top: 29%;
-    }
-}
