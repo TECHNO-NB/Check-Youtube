@@ -18,6 +18,7 @@ import Footer from "./components/Footer";
 import Subscribers from "./pages/Subscribers";
 import Collections from "./pages/Collections";
 import UpoldeNavLoader from "./components/uploadloader/UpoldeNavLoader";
+import LikedVideos from "./pages/LikedVideos";
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
       <BrowserRouter>
         <UserVerfier />
         <Navbar />
-        <UpoldeNavLoader/>
+        <UpoldeNavLoader />
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route
@@ -37,6 +38,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <VideoUpload />
+              </ProtectedRoute>
+            }
+          ></Route>
+          <Route
+            path="/getlikedby"
+            element={
+              <ProtectedRoute>
+                <LikedVideos />
               </ProtectedRoute>
             }
           ></Route>

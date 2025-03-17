@@ -47,12 +47,15 @@ const RegisterCom = () => {
     }
   };
 
- 
   return (
     <div className="h-[70vh]  mt-2  flex flex-col justify-center py-12 sm:px-6 lg:px-8 md:h-[70vh]">
       {loading ? <Loader /> : null}
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <img className="mx-auto h-14 sm:h-20 pt-2 pb-0 w-auto mt-4 md:mt-20" src={logo} alt="Logo" />
+        <img
+          className="mx-auto h-14 sm:h-20 pt-2 pb-0 w-auto mt-4 md:mt-20"
+          src={logo}
+          alt="Logo"
+        />
         <h2 className="mt-2 text-center text-3xl font-extrabold text-purple-800">
           Register
         </h2>
@@ -142,54 +145,53 @@ const RegisterCom = () => {
                 />
               </div>
             </div>
-   <div className="flex text-white">
-
-            <div>
-              <label
-                htmlFor="avatar"
-                className="block text-sm font-medium text-white"
+            <div className="flex text-white">
+              <div>
+                <label
+                  htmlFor="avatar"
+                  className="block text-sm font-medium text-white"
                 >
-                Profile Pic
-              </label>
-              <div className="mt-1">
-                <input
-                  id="avatar"
-                  name="image"
-                  type="file"
-                  accept="image/*"
-                  onChange={(e) => setAvatar(e.target.files[0])}
-                  required
-                  className="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-purple-300 rounded-md"
+                  Profile Pic
+                </label>
+                <div className="mt-1">
+                  <input
+                    id="avatar"
+                    name="image"
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => setAvatar(e.target.files[0])}
+                    required
+                    className="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-purple-300 rounded-md"
                   />
+                </div>
               </div>
-            </div> 
 
-            <div>
-              <label
-                htmlFor="coverImage"
-                className="block text-sm font-medium text-white"
+              <div>
+                <label
+                  htmlFor="coverImage"
+                  className="block text-sm font-medium text-white"
                 >
-                Cover Pic
-              </label>
-              <div className="mt-1">
-                <input
-                  onChange={(e) => setCoverImage(e.target.files[0])}
-                  id="coverImage"
-                  name="image"
-                  type="file"
-                  accept="image/*"
-                  className="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-purple-300 rounded-md"
+                  Cover Pic
+                </label>
+                <div className="mt-1">
+                  <input
+                    onChange={(e) => setCoverImage(e.target.files[0])}
+                    id="coverImage"
+                    name="image"
+                    type="file"
+                    accept="image/*"
+                    className="focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-purple-300 rounded-md"
                   />
-                  </div>
+                </div>
               </div>
-            </div> 
+            </div>
 
             <div>
               <button
                 type="submit"
                 className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-               {loading ? <ButtonLoader/> : 'Register'} 
+                {loading ? <ButtonLoader /> : "Register"}
               </button>
             </div>
           </form>
