@@ -38,9 +38,20 @@ const Home = () => {
     fetchData();
   }, []);
 
-  const filteredVideos = searchchar
-    ? data.filter((val) => val.title.toLowerCase().includes(searchchar))
+
+  useEffect(() => {
+    console.log("Search character changed:", searchchar);
+  }, [searchchar]);
+  
+  
+  const filteredVideos =
+  searchchar.length > 0
+    ? data.filter((val) =>
+        val.title.toLowerCase().includes(searchchar.toLowerCase().trim())
+      )
     : data;
+
+
 
   return (
     <div className="bg-gray-800  w-full flex">
@@ -54,7 +65,7 @@ const Home = () => {
 
       {/* flex-1  grid  sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2  xl:grid-cols-3 2xl:grid-cols-4  md:gap-y-0  */}
       <div className="videoList  md:gap-x-2 p-2 pb-8  md:pb-0 ml-[0em]  md:ml-[16em]">
-        {filteredVideos.length > 0 ? (
+        {  filteredVideos.length > 0 ? (
           filteredVideos.map((videoData) => (
             <VideoCard key={videoData._id} data={videoData} />
           ))

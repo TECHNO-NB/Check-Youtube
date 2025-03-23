@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import logo from "../assets/logo.svg";
 import { IoSearchOutline } from "react-icons/io5";
 import { FaBarsStaggered } from "react-icons/fa6";
@@ -24,10 +24,12 @@ const Navbar = () => {
   };
 
   const handleSearch = (e) => {
-    setSearchChar(e.target.value);
-    dispatch(setSearchTerm(searchChar));
-  
+    setSearchChar(e.target.value); 
   };
+  
+  useEffect(() => {
+    dispatch(setSearchTerm(searchChar.trim())); 
+  }, [searchChar]); 
 
   return (
     <nav className="bg-gray-800 w-[100vw] h-[3.7rem]  border-b-2 border-white sticky top-0 px-0 flex justify-around items-center z-50 md:px-10 md:justify-between">
@@ -35,11 +37,11 @@ const Navbar = () => {
       <div className="bg-gray-800 border-2 h-9 w-[14em] flex items-center px-0 sm:w-[28em] md:px-2 md:w-[30em] lg:w-[35em]">
         <IoSearchOutline className="text-white ml-2 md:ml-0" />
         <input
-          onInput={(e) => handleSearch(e)}
+          onChange={handleSearch}
           className="bg-none ml-2 bg-gray-800 font-[40px] h-[100%] w-[90%]  text-white placeholder:text-white outline-none"
           placeholder="Search"
           value={searchChar}
-          type="text"
+          type="search"
         ></input>
       </div>
       <div className="flex gap-2  md:gap-6">
