@@ -1,16 +1,25 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Comloader from "../components/loader/Comloader";
 const LikedVideosComp = () => {
   const [data, setData] = useState([]);
+  const [loader, setLoader] = useState(false);
   useEffect(() => {
+    setLoader(true);
     const getlikedvideos = async () => {
-      axios.defaults.withCredentials = true;
-      const res = await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}/api/v1/getlikedvideos`
-      );
-
-      setData(res.data.data);
-    };
+    try {
+        axios.defaults.withCredentials = true;
+        const res = await axios.post(
+          `${import.meta.env.VITE_BACKEND_URL}/api/v1/getlikedvideos`
+        );
+  
+        setData(res.data.data);
+        setLoader(false);
+      
+    } catch (error) {
+      setLoader(false);
+    }
+  };
     getlikedvideos();
   }, []);
 
@@ -19,7 +28,7 @@ const LikedVideosComp = () => {
   return (
     <div>
       <h1 className="text-2xl text-white">Liked Videos</h1>
-
+         {loader ? <Comloader/> :
       <div className="mt-4 text-white ">
         {data &&
           data.map((val, index) => (
@@ -38,6 +47,7 @@ const LikedVideosComp = () => {
             </div>
           ))}
       </div>
+        }
     </div>
   );
 };

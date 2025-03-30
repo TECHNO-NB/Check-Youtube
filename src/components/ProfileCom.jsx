@@ -86,7 +86,7 @@ const ProfileCom = () => {
           </div>
 
           {/* Right content: subscribed */}
-          <div className="btn w-26 h-10 text-center gap-1 px-2  bg-purple-600 mr-2 mt-3 md:mt-7 md:mr-[10em] flex items-center justify-center">
+          <div className="btn w-26 h-10 text-center gap-1 px-2  bg-[#AE7AFF] mr-2 mt-3 md:mt-7 md:mr-[10em] flex items-center justify-center">
             <FaUserPlus />
             <button className="text-[15px] font-bold py-1 rounded-md md:text-[20px]">
               Subscribed

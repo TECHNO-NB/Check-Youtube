@@ -32,6 +32,9 @@ body {
     box-shadow: 5px 5px #4F4E4E;
     transition: all 0.4s ease-in-out;
 }
+.btn-sub{
+    box-shadow: 6px 6px #4F4E4E;
+}
 .btn:hover{
     box-shadow: 0px 0px #4F4E4E;
 }

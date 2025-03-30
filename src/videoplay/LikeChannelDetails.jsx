@@ -100,7 +100,7 @@ const LikeChannelDetails = ({ owner = {} }) => {
         </div>
 
         <div className="">
-          <button className="bg-[#AE7AFF] gap-1 text-black font-bold border-[#4F4E4E] h border-b-8 border-r-8 hover:border-b-0 hover:border-r-0 ml-2 px-2 py-2 flex items-center">
+          <button className="btn btn-sub bg-[#AE7AFF] gap-1 text-black font-bold ml-2 px-2 py-2 flex items-center">
             {<LuUserPlus2 className="text-2xl " />}{" "}
             {owner.isSubscribed ? "Subscribed" : "Subscribe"}
           </button>
