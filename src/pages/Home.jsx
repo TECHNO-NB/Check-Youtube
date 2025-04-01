@@ -8,6 +8,7 @@ import Comloader from "../components/loader/Comloader";
 import { showhidemodal } from "../context/ModalContext";
 import axios from "axios";
 import "../index.css";
+import PreLoadCard from "../components/loader/PreLoadCard";
 
 const Home = () => {
   const [data, setData] = useState([]);
@@ -55,6 +56,7 @@ const Home = () => {
 
   return (
     <div className="bg-gray-800  w-full flex">
+    
       {loader ? (
         <div className="flex items-center justify-center w-[100vw]">
           {" "}
@@ -70,9 +72,7 @@ const Home = () => {
             <VideoCard key={videoData._id} data={videoData} />
           ))
         ) : (
-          <h1 className="text-white text-center col-span-full">
-            No videos found
-          </h1>
+          <p></p>
         )}
       </div>
     </div>

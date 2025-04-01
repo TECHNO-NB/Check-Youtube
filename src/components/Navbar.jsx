@@ -4,12 +4,15 @@ import { IoSearchOutline } from "react-icons/io5";
 import { FaBarsStaggered } from "react-icons/fa6";
 import { showhidesidebar } from "../context/GlobalContext";
 import { IoCloseSharp } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setSearchTerm } from "../redux/SearchSlice";
 import "../index.css"
 
 const Navbar = () => {
+
+
+  
   const { open, setOpen } = useContext(showhidesidebar);
   const [searchChar, setSearchChar] = useState("");
 
@@ -44,7 +47,7 @@ const Navbar = () => {
           type="search"
         ></input>
       </div>
-      <div className="flex gap-2  md:gap-6">
+      <div className="flex gap-2 cursor-pointer  md:gap-6">
         {open ? (
           <FaBarsStaggered
             onClick={showSideBar}

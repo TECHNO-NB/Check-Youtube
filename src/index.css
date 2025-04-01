@@ -42,8 +42,7 @@ body {
 
 @media (max-width:2133px) {
     .videoList {
-
-        grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     }
 }
 
