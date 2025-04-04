@@ -7,16 +7,16 @@ import ButtonLoader from "../components/ButtonLoader";
 
 const LikeChannelDetails = ({ owner = {} }) => {
   const navigate = useNavigate();
-  const { likescount = 0, isLike } = owner;
+  const { likescount = 0, isLike,videoId } = owner;
 
+
+  console.log("video ID",videoId);
   const [likes, setLikes] = useState(likescount);
   const [isloading, setIsloading] = useState(false);
 
   const handleLikes = async (videoId) => {
     try {
-      const url = `${import.meta.env.VITE_BACKEND_URL}/api/v1/${
-        isLike ? "unlikedvideo" : "likedvideo"
-      }/${videoId}`;
+      const url = `${import.meta.env.VITE_BACKEND_URL}/api/v1/${videoId}`;
 
       const response = isLike ? await axios.delete(url) : await axios.post(url);
 

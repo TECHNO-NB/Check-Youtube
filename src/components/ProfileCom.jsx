@@ -5,12 +5,14 @@ import Videos from "../profileComponents/Videos";
 import Playlist from "../profileComponents/Playlist";
 import Tweets from "../profileComponents/Tweets";
 import Subscribed from "../profileComponents/Subscribed";
-import "../index.css"
+import "../index.css";
+import axios from "axios";
+import ProfilePicView from '../components/ProfilePicView';
 
 const ProfileCom = () => {
   const [activeButton, setActiveButton] = useState("Videos");
-
-  
+  const [data, setData] = useState();
+  const [isProfileView,setIsProfileView]=useState(false);
 
   const user = useSelector((state) => state.login);
   const activeCheck = (buttonName) => {
@@ -38,14 +40,18 @@ const ProfileCom = () => {
     );
   }
 
-  const {
-    coverImage,
-    avatar,
-    fullName,
-    username,
-    totalSubscriber,
-    totalSubscribedToOther,
-  } = user;
+  const { coverImage, avatar, fullName, username } = user;
+
+  useEffect(() => {
+    const getUserData = async () => {
+      axios.defaults.withCredentials = true;
+      const data = await axios.post(
+        `${import.meta.env.VITE_BACKEND_URL}/api/v1/users/userprofile`
+      );
+      setData(data.data.data);
+    };
+    getUserData();
+  }, [user]);
 
   return (
     <div className="main">
@@ -65,11 +71,13 @@ const ProfileCom = () => {
             <div className="w-[5em] h-[5em] ml-2 bg-white border-black border-2 rounded-full mt-[-25px] md:w-[8em] md:h-[8em] md:ml-0">
               {avatar && (
                 <img
-                  className="w-full h-full  rounded-full"
+                 onClick={()=>setIsProfileView(true)}
+                  className="w-full h-full  rounded-full cursor-pointer"
                   src={avatar}
                   alt="Profile"
                 />
               )}
+            {isProfileView && avatar ? <ProfilePicView props={{avatar,setIsProfileView}} /> : null }  
             </div>
             <div className="mt-2 md:mt-3">
               <h1 className="text-white font-bold text-[12px] md:text-2xl">
@@ -79,8 +87,8 @@ const ProfileCom = () => {
                 {`@${username}`}
               </h6>
               <p className=" text-gray-300 mt-[-0px] text-[10px] md:text-[16px]">
-                {totalSubscriber} Subscribers · {totalSubscribedToOther}{" "}
-                Subscribed
+                {data?.subscribersCount || 0} Subscribers ·{" "}
+                {data?.subscribedToCount || 0} Subscribed
               </p>
             </div>
           </div>
