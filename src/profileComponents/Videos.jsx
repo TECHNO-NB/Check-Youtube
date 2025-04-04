@@ -24,7 +24,7 @@ const Videos = () => {
     <>
 
       {allVideos && allVideos.length > 0 ? (
-       <div className="videoList w-full">
+       <div className="videoList ">
       {  allVideos.map((videoData) => (
           <VideoCard key={videoData._id} data={videoData} />
         ))

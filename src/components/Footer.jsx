@@ -13,7 +13,7 @@ const Footer = () => {
     navigate(path);
   };
   return (
-    <div className="fixed flex justify-around bottom-0 text-white text-2xl w-full border-t-2  bg-gray-800 h-[8vh] sm:hidden">
+    <div className="fixed flex justify-around bottom-0 text-white text-2xl w-full border-t-2  bg-gray-800 h-[8vh] z-10 sm:hidden">
       <div
         onClick={() => {
           handleNavigate("/");

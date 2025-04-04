@@ -7,14 +7,7 @@ import ButtonLoader from "../components/ButtonLoader";
 
 const LikeChannelDetails = ({ owner = {} }) => {
   const navigate = useNavigate();
-  const {
-    title,
-    likescount = 0,
-    views,
-    owners = [],
-    isLike,
-    description,
-  } = owner;
+  const { likescount = 0, isLike } = owner;
 
   const [likes, setLikes] = useState(likescount);
   const [isloading, setIsloading] = useState(false);
@@ -75,7 +68,7 @@ const LikeChannelDetails = ({ owner = {} }) => {
           </div>
           <div onClick={() => handleSavePlayList(owner._id)} className="">
             <button className="bg-white flex items-center justify-center gap-1 text-black mt-3 py-1 px-4 rounded">
-              {<AiOutlineFileAdd />} {isloading ? <ButtonLoader/> : 'save' }
+              {<AiOutlineFileAdd />} {isloading ? <ButtonLoader /> : "save"}
             </button>
           </div>
         </div>
